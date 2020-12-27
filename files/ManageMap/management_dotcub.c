@@ -22,5 +22,7 @@ t_vars		management_dotcub(char *line, t_vars vars)
 		vars = management_dotcub_path_so(line, &vars);
 	else if (line[0] == 'W' && line[1] == 'E')
 		vars = management_dotcub_path_we(line, &vars);
+	else if (line[0] == 'E' && line[1] == 'A')
+		vars = management_dotcub_path_ea(line, &vars);
 	return (vars);
 }

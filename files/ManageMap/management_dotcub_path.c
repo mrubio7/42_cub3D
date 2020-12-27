@@ -62,3 +62,20 @@ t_vars			management_dotcub_path_we(char *line, t_vars *vars)
 	vars->path_W[z] = '\0';
 	return (*vars);
 }
+
+t_vars			management_dotcub_path_ea(char *line, t_vars *vars)
+{
+	int x;
+	int z;
+
+	z = 0;
+	x = 3;
+	while (line[x] != '\0')
+		x++;
+	vars->path_E = malloc(x - 3);
+	x = 3;
+	while (line[x] != '\0')
+		vars->path_E[z++] = line[x++];
+	vars->path_E[z] = '\0';
+	return (*vars);
+}
