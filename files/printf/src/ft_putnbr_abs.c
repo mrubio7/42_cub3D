@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   management_dotcub_path.c                           :+:      :+:    :+:   */
+/*   ft_putnbr_abs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 12:38:41 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/27 13:37:05 by mrubio           ###   ########.fr       */
+/*   Created: 2020/07/21 01:22:15 by mrubio            #+#    #+#             */
+/*   Updated: 2020/10/28 01:26:47 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../printf.h"
 
-t_vars			management_dotcub_path_no(char *line, t_vars *vars)
+int		ft_putnbr_abs(long n, t_flg flags)
 {
-	int x;
-	int z;
+	unsigned long num;
 
-	z = 0;
-	x = 3;
-	while (line[x] != '\0')
-		x++;
-	vars->path_N = malloc(x - 3);
-	x = 3;
-	while (line[x] != '\0')
-		vars->path_N[z++] = line[x++];
-	vars->path_N[z] = '\0';
-	return (*vars);
+	num = n;
+	return (ft_put_flag_nbr((long)num, flags));
 }

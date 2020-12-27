@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/27 12:45:00 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/12/27 13:48:07 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_vars
 }				t_vars;
 
 int				ft_get_next_line(int fd, char **line);
+int				ft_printf(const char *str, ...);
 t_vars			management_dotcub(char *line, t_vars vars);
 t_vars			management_dotcub_res(char *line, t_vars *vars);
 t_vars			management_dotcub_path_no(char *line, t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/27 13:08:31 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/12/27 13:51:42 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,21 @@ int		main(int argc, char *argv[])
 	char	*line;
 	t_vars	vars;
 
-	fd = open("map.cub", O_RDONLY);
-	if (argc == 1)
+	fd = open(argv[1], O_RDONLY);
+	if (argc == 2)
 	{
 		while ((nbytes = ft_get_next_line(fd, &line)) > 0)
 		{
-			line[nbytes] = '\0';
 			vars = management_dotcub(line, vars);
 		}
+		ft_printf("Resolution: %dx%d\n", vars.res_width, vars.res_heigth);
+		ft_printf("Path NO: %s\n", vars.path_N);
+		
 		//<- FUNCION JUEGO
 	}
 	else
 	{
-		printf("ERROR 01: MISSING MAP!");
+		ft_printf("ERROR 01: MISSING MAP!");
 	}
 	return (0);
 }

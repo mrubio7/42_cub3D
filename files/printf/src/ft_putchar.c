@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   management_dotcub_path.c                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 12:38:41 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/27 13:37:05 by mrubio           ###   ########.fr       */
+/*   Created: 2020/07/20 22:34:50 by mrubio            #+#    #+#             */
+/*   Updated: 2020/09/28 14:20:06 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../printf.h"
 
-t_vars			management_dotcub_path_no(char *line, t_vars *vars)
+int		ft_putchar(char c)
 {
-	int x;
-	int z;
-
-	z = 0;
-	x = 3;
-	while (line[x] != '\0')
-		x++;
-	vars->path_N = malloc(x - 3);
-	x = 3;
-	while (line[x] != '\0')
-		vars->path_N[z++] = line[x++];
-	vars->path_N[z] = '\0';
-	return (*vars);
+	write(1, &c, 1);
+	return (1);
 }

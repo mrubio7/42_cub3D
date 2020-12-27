@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   management_dotcub_path.c                           :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 12:38:41 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/27 13:37:05 by mrubio           ###   ########.fr       */
+/*   Created: 2020/10/01 10:25:49 by mrubio            #+#    #+#             */
+/*   Updated: 2020/10/23 19:18:08 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../printf.h"
 
-t_vars			management_dotcub_path_no(char *line, t_vars *vars)
+int		ft_putnbr(long n)
 {
 	int x;
-	int z;
 
-	z = 0;
-	x = 3;
-	while (line[x] != '\0')
-		x++;
-	vars->path_N = malloc(x - 3);
-	x = 3;
-	while (line[x] != '\0')
-		vars->path_N[z++] = line[x++];
-	vars->path_N[z] = '\0';
-	return (*vars);
+	x = 0;
+	if (n < 0)
+	{
+		x += ft_putchar('-');
+		if (n <= -10)
+			x += ft_putnbr(n / -10);
+		x += ft_putchar(-(n % 10) + 48);
+	}
+	else if (n > 9)
+	{
+		x += ft_putnbr(n / 10);
+		x += ft_putchar((n % 10) + 48);
+	}
+	else
+		x += ft_putchar((n % 10) + 48);
+	return (x);
 }
