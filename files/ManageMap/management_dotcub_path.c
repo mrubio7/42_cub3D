@@ -79,3 +79,20 @@ t_vars			management_dotcub_path_ea(char *line, t_vars *vars)
 	vars->path_E[z] = '\0';
 	return (*vars);
 }
+
+t_vars			management_dotcub_path_sprite(char *line, t_vars *vars)
+{
+	int x;
+	int z;
+
+	z = 0;
+	x = 2;
+	while (line[x] != '\0')
+		x++;
+	vars->path_I = malloc(x - 2);
+	x = 2;
+	while (line[x] != '\0')
+		vars->path_I[z++] = line[x++];
+	vars->path_I[z] = '\0';
+	return (*vars);
+}

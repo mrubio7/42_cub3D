@@ -27,7 +27,7 @@ int		main(int argc, char *argv[])
 	{
 		while ((nbytes = ft_get_next_line(fd, &line)) > 0)
 		{
-			if (x < 5)
+			if (x < 7)
 				ft_printf("DOC: >%s\n", line);
 			x++;
 			vars = management_dotcub(line, vars);
@@ -37,7 +37,8 @@ int		main(int argc, char *argv[])
 		ft_printf("PATH SO: %s\n", vars.path_S);
 		ft_printf("PATH WE: %s\n", vars.path_W);
 		ft_printf("PATH EA: %s\n", vars.path_E);
-		
+		ft_printf("PATH SPRITE: %s\n", vars.path_I);
+
 		//<- FUNCION JUEGO
 	}
 	else
