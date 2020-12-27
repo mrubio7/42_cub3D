@@ -38,9 +38,9 @@ typedef struct	s_vars
 	int			res_width;
 	int			res_heigth;
 	char		*path_N;
+	char		*path_E;
 	char		*path_S;
 	char		*path_W;
-	char		*path_E;
 	char		*path_I;
 	int			color_floor;
 	int			color_ceiling;
@@ -52,5 +52,9 @@ int				ft_printf(const char *str, ...);
 t_vars			management_dotcub(char *line, t_vars vars);
 t_vars			management_dotcub_res(char *line, t_vars *vars);
 t_vars			management_dotcub_path_no(char *line, t_vars *vars);
+t_vars			management_dotcub_path_so(char *line, t_vars *vars);
+t_vars			management_dotcub_path_we(char *line, t_vars *vars);
+t_vars			management_dotcub_path_ea(char *line, t_vars *vars);
+t_vars			management_dotcub_path_sprite(char *line, t_vars *vars);
 
 #endif

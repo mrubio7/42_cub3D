@@ -18,5 +18,9 @@ t_vars		management_dotcub(char *line, t_vars vars)
 		vars = management_dotcub_res(line, &vars);
 	else if (line[0] == 'N' && line[1] == 'O')
 		vars = management_dotcub_path_no(line, &vars);
+	else if (line[0] == 'S' && line[1] == 'O')
+		vars = management_dotcub_path_so(line, &vars);
+	else if (line[0] == 'W' && line[1] == 'E')
+		vars = management_dotcub_path_we(line, &vars);
 	return (vars);
 }
