@@ -45,7 +45,7 @@ lldb:
 	gcc -g3 $(SRCS) $(LIB) $(HEAD) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	$(shell find . -name "*.o" -delete)
 	rm -f *.d
 	make -C ./libs/libft clean
 
@@ -53,8 +53,5 @@ fclean: clean
 	rm -f $(NAME)
 	make -C ./libs/libft fclean
 	make -C $(LIBMAKE) clean
-
-superclean: fclean
-	$(shell find . -name "*.o" -delete)
 
 re: fclean all
