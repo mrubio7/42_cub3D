@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 12:38:41 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/28 16:52:53 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/12/28 16:55:04 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ char		*management_dotcub_path(char *line)
 	char *str;
 
 	z = 0;
-	x = 3;
+	x = 0;
+	while (line[x] != '.')
+		x++;
 	while (line[x] != '\0')
 		x++;
 	str = malloc(x - 3);
@@ -37,7 +39,9 @@ char		*management_dotcub_path_sprite(char *line)
 	char *str;
 
 	z = 0;
-	x = 2;
+	x = 0;
+	while (line[x] != '.')
+		x++;
 	while (line[x] != '\0')
 		x++;
 	str = malloc(x - 2);
