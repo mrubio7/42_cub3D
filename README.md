@@ -1,4 +1,4 @@
-42Madrid Cursus - ft_printf
+42Madrid Cursus - cub3D
 
 ## Objetivo
 
