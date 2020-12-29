@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 22:17:48 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/29 21:07:46 by mrubio           ###   ########.fr       */
+/*   Updated: 2020/12/29 21:17:47 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ t_map		management_dotcub(char *line, t_map map)
 		map.color_floor = management_dotcub_color(line);
 	else if (line[0] == 'C' && line[1] == ' ')
 		map.color_ceiling = management_dotcub_color(line);
-	//else if (line[0] == ' ' || line[0] == '1')
+	else if (line[0] == ' ' || line[0] == '1')
+	{
+		*map.map[0] = malloc(5);
+		*map.map[0] = "HOLA";
+	}
 	
 	return (map);
 }
