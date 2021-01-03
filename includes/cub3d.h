@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/31 15:55:20 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/03 01:04:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct	s_map
 	char		*path_I;
 	int			color_floor;
 	int			color_ceiling;
-	char		map[100][100];
+	char		**map;
 }				t_map;
 
 int				ft_get_next_line(int fd, char **line);

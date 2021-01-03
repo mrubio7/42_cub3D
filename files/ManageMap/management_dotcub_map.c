@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 20:30:14 by mrubio            #+#    #+#             */
-/*   Updated: 2020/12/31 15:52:23 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/03 01:09:14 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char		*management_dotcub_map(char *line)
 	x = 0;
 	while (line[x])
 		x++;
-	map_row = (char *)malloc(x + 2);
+	map_row = (char *)malloc(x + 1);
 	x = 0;
 	while (line[x] != '\0')
 	{
