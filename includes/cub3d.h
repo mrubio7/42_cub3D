@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/03 01:04:57 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/06 23:51:18 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,17 @@ typedef struct	s_map
 	char		**map;
 }				t_map;
 
+typedef struct	s_rdmap
+{
+	int			row;
+	int			col;
+	int			svd_row;
+	int			svd_col;
+	int			og_col;
+	int			error;
+}				t_rdmap;
+
+
 int				ft_get_next_line(int fd, char **line);
 int				ft_printf(const char *str, ...);
 t_map			management_dotcub(char *line, t_map map);
@@ -59,5 +70,11 @@ char			*management_dotcub_path(char *line);
 char			*management_dotcub_path_sprite(char *line);
 int				management_dotcub_color(char *line);
 char			*management_dotcub_map(char *line);
+int				management_dotcub_errors(t_map *map);
+int				management_dotcub_closedmap(char **map);
+t_rdmap			read_map_right(char **map, t_rdmap rdmap);
+t_rdmap			read_map_down(char **map, t_rdmap rdmap);
+t_rdmap			read_map_left(char **map, t_rdmap rdmap);
+t_rdmap			read_map_up(char **map, t_rdmap rdmap);
 
 #endif
