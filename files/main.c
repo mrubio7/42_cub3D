@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/06 22:53:58 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:26:11 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int		main(int argc, char *argv[])
 				break;
 		}
 		close(fd);
-		management_dotcub_errors(&map);
+		if (management_dotcub_errors(&map) == -1)
+		{
+			ft_printf("MAP READ ERROR\n");
+			return (0);
+		}
 		//<- FUNCION JUEGO
 	}
 	else
