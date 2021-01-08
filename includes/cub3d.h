@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/08 15:17:51 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:56:42 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char			*management_dotcub_path_sprite(char *line);
 int				management_dotcub_color(char *line);
 char			*management_dotcub_map(char *line);
 int				management_dotcub_errors(t_map *map);
+int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
 
 #endif
