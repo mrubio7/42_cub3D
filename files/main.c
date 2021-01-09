@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/08 21:14:06 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/09 00:20:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int		main(int argc, char *argv[])
 	int		nbytes;
 	char	*line;
 	t_map	map;
+	int r;
+
+	r = 0;
 
 	fd = open("map.cub", O_RDONLY);
 	if (argc == 1)
