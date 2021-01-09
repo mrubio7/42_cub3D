@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/08 23:50:38 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/09 23:20:54 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,15 @@ int		management_dotcub_errors(t_map *map)
 
 	r = 0;
 	if (management_dotcub_res_error(map->res_width, map->res_heigth) == 0)
+	{
+		ft_printf("RESOLUTION ERROR\n");
 		return (-1);
+	}
 	if (management_dotcub_closedmap(map->map) == -1)
+	{
+		ft_printf("MAP READ ERROR\n");
 		return (-1);
+	}
 	return (1);
 }
 
