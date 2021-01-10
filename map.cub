@@ -1,10 +1,10 @@
 R 1280 768
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./texture/blue.xpm
+SO ./texture/wood.xpm
+WE ./texture/grey.xpm
+EA ./texture/brick.xpm
 
-S ./path_to_the_sprite_texture
+S ./texture/barrel.xpm
 F 220,100,0
 C 225,30,0
 

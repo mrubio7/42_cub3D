@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/09 23:31:10 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/10 19:31:25 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,15 @@ typedef struct	s_vars
 {
 	void		*mlx;
 	void		*win;
+	int			posX;
+	int			posY;
+	int			dirX;
+	int			dirY;
+	int			planeX;
+	int			planeY;
+	double		cameraX;
+	double		rayDirX;
+	double		rayDirY;
 }				t_vars;
 
 int				ft_get_next_line(int fd, char **line);
@@ -65,5 +74,6 @@ int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
 
 int				init_game(t_map map);
+t_vars			detect_start_pos(char **map, t_vars vars);
 
 #endif

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/10 20:03:17 by mrubio           ###   ########.fr       */
+/*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
+/*   Updated: 2021/01/10 19:53:25 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		init_game(t_map map)
+t_vars			detect_start_pos(char **map, t_vars vars)
 {
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars = detect_start_pos(map.map, vars);
-	vars.win = mlx_new_window(vars.mlx, map.res_width, map.res_heigth, "cub3D");
-	mlx_loop(vars.mlx);
-	return (0);
+	vars.posX = 0;
+	vars.posY = 0;
+	while (map[vars.posY][vars.posX])
+	{
+		if (ft_strchr("NSEW", map[vars.posY][vars.posX]) != NULL)
+			return (vars);
+		else
+			vars.posX++;
+		if (map[vars.posY][vars.posX] == '\0')
+		{
+			vars.posY++;
+			vars.posX = 0;
+		}
+	}
+	return (vars);
 }
