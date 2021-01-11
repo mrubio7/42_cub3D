@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:29:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/09 23:42:42 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/11 01:34:30 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ int			management_dotcub_closedmap(char **map)
 			x = 0;
 		}
 	}
-	ft_printf("map.cub OK! :)\n");
 	return (1);
 }

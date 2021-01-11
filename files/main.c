@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/09 23:45:59 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/11 23:46:44 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ int		main(int argc, char *argv[])
 	int		nbytes;
 	char	*line;
 	t_map	map;
+	t_vars	vars;
 
-	fd = open("map.cub", O_RDONLY);
-	if (argc == 1)
+	fd = open(argv[1], O_RDONLY);
+	if (argc == 2)
 	{
 		map.map = (char **)malloc(100 * 100 * sizeof(char *));
 		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
@@ -30,9 +31,10 @@ int		main(int argc, char *argv[])
 				break;
 		}
 		close(fd);
-		if (management_dotcub_errors(&map) == -1)
+		vars.mlx = mlx_init();
+		if (management_dotcub_errors(&map, &vars) == -1)
 			return (0);
-		init_game(map);
+		init_game(map, vars);
 	}
 	else
 		ft_printf("MISSING MAP!\n");

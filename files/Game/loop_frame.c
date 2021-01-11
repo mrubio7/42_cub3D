@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   loop_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 17:50:08 by rfork             #+#    #+#             */
-/*   Updated: 2021/01/11 11:54:34 by mrubio           ###   ########.fr       */
+/*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
+/*   Updated: 2021/01/11 23:46:10 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3d.h"
 
-char	*ft_strchr(const char *s, int c)
+int		loop_frame(t_vars *vars, char **map, t_pj pj, t_cam cam,  t_ray ray)
 {
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			return ((char*)(s + i));
-		i++;
-	}
-	if (s[i] == c)
-		return ((char*)(s + i));
-	return (NULL);
+	mlx_loop(vars->mlx);
+	return (0);
 }

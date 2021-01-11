@@ -45,7 +45,7 @@ lldb:
 	gcc -g3 $(SRCS) $(LIB) $(HEAD) -o $(NAME)
 
 clean:
-	$(shell find . -name "*.o" -delete)
+	$(shell find ./files/ -name "*.o" -delete)
 	rm -f *.d
 	make -C ./libs/libft clean
 

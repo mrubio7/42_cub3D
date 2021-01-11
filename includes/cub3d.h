@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/10 19:31:25 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/11 21:53:56 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,31 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
+typedef struct	s_cam
+{
+	double		planeX;
+	double		planeY;
+	double		cameraX;
+}				t_cam;
+
+typedef struct	s_pj
+{
+	double		posX;
+	double		posY;
+	double		dirX;
+	double		dirY;
+}				t_pj;
+
+typedef struct	s_ray
+{
+	double		rayDirX;
+	double		rayDirY;
+}				t_ray;
+
 typedef struct	s_vars
 {
 	void		*mlx;
 	void		*win;
-	int			posX;
-	int			posY;
-	int			dirX;
-	int			dirY;
-	int			planeX;
-	int			planeY;
-	double		cameraX;
-	double		rayDirX;
-	double		rayDirY;
 }				t_vars;
 
 int				ft_get_next_line(int fd, char **line);
@@ -69,11 +81,12 @@ char			*management_dotcub_path(char *line);
 char			*management_dotcub_path_sprite(char *line);
 int				management_dotcub_color(char *line);
 char			*management_dotcub_map(char *line);
-int				management_dotcub_errors(t_map *map);
+int				management_dotcub_errors(t_map *map, t_vars *vars);
 int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
 
-int				init_game(t_map map);
-t_vars			detect_start_pos(char **map, t_vars vars);
+int				init_game(t_map map, t_vars vars);
+t_pj			detect_start_pos(char **map, t_pj pj);
+int				loop_frame(t_vars *vars, char **map, t_pj pj, t_cam cam,  t_ray ray);
 
 #endif

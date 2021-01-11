@@ -6,27 +6,52 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/10 19:53:25 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/11 21:54:36 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_vars			detect_start_pos(char **map, t_vars vars)
+t_pj			dir_pos(char pos, t_pj pj)
 {
-	vars.posX = 0;
-	vars.posY = 0;
-	while (map[vars.posY][vars.posX])
+	pj.dirX = 0;
+	pj.dirY = 0;
+
+	if (pos == 'N')
+		pj.dirY = 1;
+	else if (pos == 'S')
+		pj.dirY = -1;
+	else if (pos == 'W')
+		pj.dirX = -1;
+	else if (pos == 'E')
+		pj.dirX = 1;
+	return (pj);
+}
+
+t_pj			detect_start_pos(char **map, t_pj pj)
+{
+	char pos;
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (map[y][x])
 	{
-		if (ft_strchr("NSEW", map[vars.posY][vars.posX]) != NULL)
-			return (vars);
-		else
-			vars.posX++;
-		if (map[vars.posY][vars.posX] == '\0')
+		if ((pos = ft_strchr("NSEW", map[y][x])) != NULL)
 		{
-			vars.posY++;
-			vars.posX = 0;
+			pj = dir_pos(pos, pj);
+			pj.posX = x;
+			pj.posY = y;
+			return (pj);
+		}
+		else
+			x += 1;
+		if (map[y][x] == '\0')
+		{
+			y += 1;
+			x = 0;
 		}
 	}
-	return (vars);
+	return (pj);
 }

@@ -1,4 +1,4 @@
-R 1280 768
+R 800 600
 NO ./texture/blue.xpm
 SO ./texture/wood.xpm
 WE ./texture/grey.xpm
