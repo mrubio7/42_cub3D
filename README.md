@@ -2,4 +2,4 @@
 
 ## Objetivo
 
-Crear un videojuego en 3D usando raycast.
+Crear un videojuego en 3D usando las técnicas de raycasting.
