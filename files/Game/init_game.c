@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/11 21:55:31 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/13 20:32:15 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		init_game(t_map map, t_vars vars)
 
 	pj = detect_start_pos(map.map, pj);
 	vars.win = mlx_new_window(vars.mlx, map.res_width, map.res_heigth, "cub3D");
-	while (loop_frame(&vars, map.map, pj, cam, ray) != -1)
+	while (loop_frame(&vars, &map, pj, cam, ray) != -1)
 	{
 		
 	}

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/11 21:53:56 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/13 20:38:10 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ typedef struct	s_ray
 {
 	double		rayDirX;
 	double		rayDirY;
+	double		sideDistX;
+	double		sideDistY;
+	double		deltaDistX;
+	double		deltaDistY;
+	int			stepX;
+	int			stepY;
+	int			mapX;
+	int			mapY;
+	int			hit;
 }				t_ray;
 
 typedef struct	s_vars
@@ -87,6 +96,7 @@ int				management_dotcub_closedmap(char **map);
 
 int				init_game(t_map map, t_vars vars);
 t_pj			detect_start_pos(char **map, t_pj pj);
-int				loop_frame(t_vars *vars, char **map, t_pj pj, t_cam cam,  t_ray ray);
+int				loop_frame(t_vars *vars, t_map *map, t_pj pj, t_cam cam,  t_ray ray);
+int				preparing_dda(t_ray *ray, t_map *pj);
 
 #endif
