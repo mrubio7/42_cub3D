@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/13 21:25:53 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/14 19:15:23 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,17 @@ typedef struct	s_ray
 	int			mapY;
 	int			side;
 	int			hit;
-	double		perpWallDist;
 }				t_ray;
+
+typedef struct	s_game
+{
+	double		perpWallDist;
+	int			lineHeight;
+	int			drawStart;
+	int			drawEnd;
+	int			color;
+}				t_game;
+
 
 typedef struct	s_vars
 {
@@ -98,7 +107,9 @@ int				management_dotcub_closedmap(char **map);
 
 int				init_game(t_map map, t_vars vars);
 t_pj			detect_start_pos(char **map, t_pj pj);
-int				loop_frame(t_vars *vars, t_map *map, t_pj pj, t_cam cam,  t_ray ray);
-int				dda_algorithm(t_ray *ray, t_map *pj, char **map);
+int				loop_frame(t_vars *vars, t_map *map, t_pj pj, t_cam cam, t_ray ray, t_game game, t_img *img);
+int				v_line(t_vars *vars ,t_ray *ray, t_pj *pj, t_game *game, t_map *map, t_img *img, int z);
+int				get_color_wall(t_ray *ray, t_map *map);
+void			put_pixels(t_vars *vars, t_game *game, t_img *img, int z);
 
 #endif

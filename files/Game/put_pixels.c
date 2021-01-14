@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   put_pixels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/14 19:02:42 by mrubio           ###   ########.fr       */
+/*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
+/*   Updated: 2021/01/14 21:24:44 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		init_game(t_map map, t_vars vars)
+void		my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
-	t_pj	pj;
-	t_cam	cam;
-	t_ray	ray;
-	t_game	game;
-	t_img	img;
+	char	*dst;
 
-	pj = detect_start_pos(map.map, pj);
-	vars.win = mlx_new_window(vars.mlx, map.res_width, map.res_heigth, "cub3D");
-	loop_frame(&vars, &map, pj, cam, ray, game, &img);
-	return (0);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+void		put_pixels(t_vars *vars, t_game *game, t_img *img, int z)
+{
+	while (game->drawStart++ < game->drawEnd)
+	{
+		my_mlx_pixel_put(img, z, game->drawStart, game->color);
+	}
+	
 }
