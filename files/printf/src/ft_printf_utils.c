@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 02:45:47 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/09 19:37:10 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/14 23:15:55 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,6 @@ void			ft_bzero(void *s, unsigned int n)
 		f++;
 		n--;
 	}
-}
-
-char			*ft_strchr(char *s, int c)
-{
-	int x;
-
-	x = 0;
-	while (s[x])
-	{
-		if (s[x] == c)
-			return (s + x);
-		x++;
-	}
-	return (NULL);
 }
 
 int				ft_nblen(long n)

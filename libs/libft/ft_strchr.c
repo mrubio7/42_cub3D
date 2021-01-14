@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 17:50:08 by rfork             #+#    #+#             */
-/*   Updated: 2021/01/11 11:54:34 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/14 23:18:35 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			return ((char*)(s + i));
+			return ((char *)(s + i));
 		i++;
 	}
 	if (s[i] == c)
-		return ((char*)(s + i));
+		return ((char *)(s + i));
 	return (NULL);
 }
