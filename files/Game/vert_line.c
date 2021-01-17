@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/14 22:52:31 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/17 01:25:48 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ray_hit_dda(t_map *map, t_ray *ray)
 		ray->mapY += ray->stepY;
 		ray->side = 1;
 	}
-	if (map->map[ray->mapX][ray->mapY] > 0)
+	if (map->map[ray->mapY][ray->mapX] > '0')
 		ray->hit = 1;
 }
 
@@ -80,8 +80,8 @@ int		v_line(t_vars *vars, t_ray *ray, t_pj *pj, t_game *game, t_map *map, t_img 
 	else
 		game->perpWallDist = (ray->mapY - pj->posY + (1 - ray->stepY) / 2) / ray->rayDirY;
 	calc_drawline(game, map);
-	game->color = get_color_wall(ray, map);
-	put_pixels(vars, game, img, z);
+	game->color = get_color_wall(ray, map->map);
+	put_pixels(vars, game, img, z, map->res_heigth);
 
 	return (0);
 }

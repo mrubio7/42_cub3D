@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/14 22:39:56 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/16 21:29:59 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int				init_game(t_map map, t_vars vars);
 t_pj			detect_start_pos(char **map, t_pj pj);
 int				loop_frame(t_vars *vars, t_map *map, t_pj pj, t_ray ray, t_game game, t_img *img);
 int				v_line(t_vars *vars ,t_ray *ray, t_pj *pj, t_game *game, t_map *map, t_img *img, int z);
-int				get_color_wall(t_ray *ray, t_map *map);
-void			put_pixels(t_vars *vars, t_game *game, t_img *img, int z);
+int				get_color_wall(t_ray *ray, char **map);
+void			put_pixels(t_vars *vars, t_game *game, t_img *img, int z, int res);
 
 #endif

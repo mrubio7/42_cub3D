@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/14 21:24:44 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/15 20:26:24 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void		my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void		put_pixels(t_vars *vars, t_game *game, t_img *img, int z)
+void		put_pixels(t_vars *vars, t_game *game, t_img *img, int z, int res)
 {
-	while (game->drawStart++ < game->drawEnd)
-	{
-		my_mlx_pixel_put(img, z, game->drawStart, game->color);
-	}
+	int x;
 	
+	x = game->drawStart;
+	while (x-- > (res - game->drawEnd))
+		my_mlx_pixel_put(img, z, x, game->color);
 }
