@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/17 01:25:48 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/18 19:48:03 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	init_dda_params(t_ray *ray, t_pj *pj)
 	ray->hit = 0;
 	ray->mapX = (int)pj->posX;
 	ray->mapY = (int)pj->posY;
-	ray->deltaDistX = (ray->rayDirY == 0) ? 0 : ((ray->rayDirX == 0) ? 1 : fabs(1 / ray->rayDirX));
-	ray->deltaDistY = (ray->rayDirX == 0) ? 0 : ((ray->rayDirY == 0) ? 1 : fabs(1 / ray->rayDirY));
+	ray->deltaDistX = fabs(1 / ray->rayDirX);
+	ray->deltaDistY = fabs(1 / ray->rayDirY);
 	if (ray->rayDirX < 0)
 	{
 		ray->stepX = -1;
@@ -59,29 +59,31 @@ void	ray_hit_dda(t_map *map, t_ray *ray)
 		ray->hit = 1;
 }
 
-void	calc_drawline(t_game *game, t_map *map)
+void	calc_drawline(t_game *game, t_map *map, t_ray *ray, t_pj *pj)
 {
-	game->lineHeight = (map->res_heigth / game->perpWallDist);
-	game->drawStart = game->lineHeight / 2 + map->res_heigth / 2;
+	if (ray->side == 0)
+		game->perpWallDist = (ray->mapX - pj->posX + (1 - ray->stepX) / 2) / ray->rayDirX;
+	else
+		game->perpWallDist = (ray->mapY - pj->posY + (1 - ray->stepY) / 2) / ray->rayDirY;
+	game->lineHeight = (int)(map->res_heigth / game->perpWallDist);
+	game->drawStart = (-game->lineHeight / 2) + (map->res_heigth / 2);
 	if (game->drawStart < 0)
 		game->drawStart = 0;
-	game->drawEnd = game->lineHeight / 2 + map->res_heigth / 2;
+	game->drawEnd = (game->lineHeight / 2) + (map->res_heigth / 2);
 	if (game->drawEnd >= map->res_heigth)
 		game->drawEnd = map->res_heigth - 1;
 }
 
 int		v_line(t_vars *vars, t_ray *ray, t_pj *pj, t_game *game, t_map *map, t_img *img, int z)
 {
+	pj->cameraX = (2 * z) / (double)(map->res_width) - 1;
+	ray->rayDirX = pj->dirX + pj->planeX * pj->cameraX;
+	ray->rayDirY = pj->dirY + pj->planeY * pj->cameraX;
 	init_dda_params(ray, pj);
 	while (ray->hit == 0)
 		ray_hit_dda(map, ray);
-	if (ray->side == 0)
-		game->perpWallDist = (ray->mapX - pj->posX + (1 - ray->stepX) / 2) / ray->rayDirX;
-	else
-		game->perpWallDist = (ray->mapY - pj->posY + (1 - ray->stepY) / 2) / ray->rayDirY;
-	calc_drawline(game, map);
+	calc_drawline(game, map, ray, pj);
 	game->color = get_color_wall(ray, map->map);
-	put_pixels(vars, game, img, z, map->res_heigth);
-
+	put_pixels(vars, game, img, z, map->res_width);
 	return (0);
 }

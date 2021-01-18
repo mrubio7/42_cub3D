@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:21:55 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/15 20:34:28 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/18 19:57:02 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		get_color_wall(t_ray *ray, char **map)
 	else if (map[ray->mapY][ray->mapX] == '4')
 		color = 0xFF0000;
 	if (ray->side == 1)
-		color /= 2;
+		color /= 1.5;
 	return (color);
 }

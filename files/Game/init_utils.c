@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/17 01:27:58 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/18 19:24:15 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,22 @@ t_pj		dir_pos(char pos, t_pj pj)
 	if (pos == 'N')
 	{
 		pj.dirY = -1;
-		pj.planeY = 0.66;
+		pj.planeX = -0.90;
 	}
 	else if (pos == 'S')
 	{
 		pj.dirY = 1;
-		pj.planeY = -0.66;
+		pj.planeX = 0.90;
 	}
 	else if (pos == 'W')
 	{
 		pj.dirX = -1;
-		pj.planeX = 0.66;
+		pj.planeY = 0.90;
 	}
 	else if (pos == 'E')
 	{
 		pj.dirX = 1;
-		pj.planeX = -0.66;
+		pj.planeY = -0.90;
 	}
 	return (pj);
 }
@@ -69,7 +69,6 @@ t_pj		detect_start_pos(char **map, t_pj pj)
 	{
 		if ((pos = ft_strchr_one("NSEW", map[y][x])) != (char)NULL)
 		{
-			printf("\nPOS: %c\n", pos);
 			pj = dir_pos(pos, pj);
 			pj.posX = x;
 			pj.posY = y;
