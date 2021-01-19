@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/18 19:48:03 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/19 18:43:44 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,18 @@ void	calc_drawline(t_game *game, t_map *map, t_ray *ray, t_pj *pj)
 		game->drawEnd = map->res_heigth - 1;
 }
 
-int		v_line(t_vars *vars, t_ray *ray, t_pj *pj, t_game *game, t_map *map, t_img *img, int z)
+int		v_line(t_vars *vars, t_pj *pj, t_game *game, t_map *map, t_img *img, int z)
 {
+	t_ray	ray;
+
 	pj->cameraX = (2 * z) / (double)(map->res_width) - 1;
-	ray->rayDirX = pj->dirX + pj->planeX * pj->cameraX;
-	ray->rayDirY = pj->dirY + pj->planeY * pj->cameraX;
-	init_dda_params(ray, pj);
-	while (ray->hit == 0)
-		ray_hit_dda(map, ray);
-	calc_drawline(game, map, ray, pj);
-	game->color = get_color_wall(ray, map->map);
+	ray.rayDirX = pj->dirX + pj->planeX * pj->cameraX;
+	ray.rayDirY = pj->dirY + pj->planeY * pj->cameraX;
+	init_dda_params(&ray, pj);
+	while (ray.hit == 0)
+		ray_hit_dda(map, &ray);
+	calc_drawline(game, map, &ray, pj);
+	game->color = get_color_wall(&ray, map->map);
 	put_pixels(vars, game, img, z, map->res_width);
 	return (0);
 }
