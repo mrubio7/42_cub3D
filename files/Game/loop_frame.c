@@ -6,25 +6,21 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/19 21:34:31 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/19 23:15:36 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		loop_frame(t_vars *vars, t_map *map, t_pj *pj, t_img *img)
+int		loop_frame(t_all *all)
 {
 	int z;
 
 	z = 0;
-	while (z < map->res_width)
+	while (z < all->map.res_width)
 	{
-		v_line(vars, pj, map, img, z);
+		v_line(all, z);
 		z++;
-		if (z == map->res_width)
-		{
-			mlx_clear_window(vars->mlx, vars->win);
-		}
 	}
 	return (0);
 }

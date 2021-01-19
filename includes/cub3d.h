@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/19 21:28:51 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/19 23:14:53 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,16 @@ typedef struct	s_vars
 	void		*win;
 }				t_vars;
 
+typedef struct	s_all
+{
+	t_vars		vars;
+	t_pj		pj;
+	t_game		game;
+	t_ray		ray;
+	t_img		img;
+	t_map		map;
+}				t_all;
+
 int				ft_get_next_line(int fd, char **line);
 int				ft_printf(const char *str, ...);
 
@@ -101,10 +111,10 @@ int				management_dotcub_errors(t_map *map, t_vars *vars);
 int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
 
-int				init_game(t_map map, t_vars vars);
+int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);
-int				loop_frame(t_vars *vars, t_map *map, t_pj *pj, t_img *img);
-int				v_line(t_vars *vars, t_pj *pj, t_map *map, t_img *img, int z);
+int				loop_frame(t_all *all);
+int				v_line(t_all *all, int z);
 int				get_color_wall(t_ray *ray, char **map);
 void			put_pixels(t_vars *vars, t_game *game, t_img *img, int z, int res);
 int				movement_pj(int keycode, t_pj *pj);

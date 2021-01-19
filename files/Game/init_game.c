@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/19 21:35:41 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/19 23:20:37 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,19 @@ int		close_game_esc(int keycode, t_vars *vars)
 	return (1);
 }
 
-int		init_game(t_map map, t_vars vars)
+int		init_game(t_all all)
 {
-	t_pj	pj;
-	t_img	img;
-
-	pj = detect_start_pos(map.map, pj);
-	vars.win = mlx_new_window(vars.mlx, map.res_width, map.res_heigth, "cub3D");
-	img.img = mlx_new_image(vars.mlx, map.res_width, map.res_heigth);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, 
-								&img.line_length, &img.endian);
-	mlx_hook(vars.win, 17, 1L<<17, close_game_x, &vars);
-	mlx_key_hook(vars.win, close_game_esc, &vars);
-	loop_frame(&vars, &map, &pj, &img);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_hook(vars.win, 2, 1L<<0, movement_pj, &pj);
-	//mlx_loop_hook(vars->mlx, loop_frame, pj);
-	mlx_loop(vars.mlx);
+	all.pj = detect_start_pos(all.map.map, all.pj);
+	all.vars.win = mlx_new_window(all.vars.mlx, all.map.res_width, all.map.res_heigth, "cub3D");
+	all.img.img = mlx_new_image(all.vars.mlx, all.map.res_width, all.map.res_heigth);
+	all.img.addr = mlx_get_data_addr(all.img.img, &all.img.bits_per_pixel, 
+								&all.img.line_length, &all.img.endian);
+	mlx_hook(all.vars.win, 17, 1L<<17, close_game_x, &all.vars);
+	mlx_key_hook(all.vars.win, close_game_esc, &all.vars);
+	mlx_hook(all.vars.win, 2, 1L<<0, movement_pj, &all.pj);
+	loop_frame(&all);
+	mlx_put_image_to_window(all.vars.mlx, all.vars.win, all.img.img, 0, 0);
+	mlx_loop_hook(all.vars.mlx, loop_frame, &all);
+	mlx_loop(all.vars.mlx);
 	return (0);
 }
