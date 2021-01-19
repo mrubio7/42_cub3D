@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/19 18:46:17 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/19 21:28:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ int				management_dotcub_closedmap(char **map);
 
 int				init_game(t_map map, t_vars vars);
 t_pj			detect_start_pos(char **map, t_pj pj);
-int				loop_frame(t_vars *vars, t_map *map, t_pj *pj, t_game game, t_img *img);
-int				v_line(t_vars *vars, t_pj *pj, t_game *game, t_map *map, t_img *img, int z);
+int				loop_frame(t_vars *vars, t_map *map, t_pj *pj, t_img *img);
+int				v_line(t_vars *vars, t_pj *pj, t_map *map, t_img *img, int z);
 int				get_color_wall(t_ray *ray, char **map);
 void			put_pixels(t_vars *vars, t_game *game, t_img *img, int z, int res);
 int				movement_pj(int keycode, t_pj *pj);
