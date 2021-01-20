@@ -1,4 +1,4 @@
-GCC = gcc -Wall -Wextra -Werror -w
+GCC = gcc -Wall -Wextra -Werror
 NAME = cub3D
 SRCS = $(shell find ./files -name "*.c")
 OBJS = $(SRCS:.c=.o)
@@ -6,7 +6,6 @@ HEAD = -I ./libs/minilibx_macos/ -s
 MAKE_LIBS = ./libs/libft/libft.a ./libs/minilibx_macos/libmlx.a
 LIB := -L libs/libft -lft -L libs/minilibx_macos -lmlx -framework OpenGL -framework Appkit -lz
 DLIBMLX = libmlx.dylib
-
 
 CLS = clear
 Yellow = \033[0;33m
