@@ -13,7 +13,7 @@ CFLAGS=-O3
 
 NAME=libmlx.dylib
 
-INC=-I.
+INC=-I. -suppress-warnings
 #OPTI=-Ounchecked
 
 all: $(NAME)
