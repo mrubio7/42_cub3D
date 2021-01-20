@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 12:10:12 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:11:08 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/23 14:28:38 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/27 20:17:29 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnew(size_t size)
+int		ft_lstsize(t_list *lst)
 {
-	size_t	i;
-	char	*arr;
+	t_list	*current;
+	int		x;
 
-	if ((size + 1) == 0)
-		return (NULL);
-	i = 0;
-	arr = (char*)malloc(sizeof(char) * (size + 1));
-	if (arr)
+	current = lst;
+	x = 0;
+	while (current != NULL)
 	{
-		while (i <= size + 1)
-		{
-			arr[i] = '\0';
-			i++;
-		}
-		return (arr);
+		x += 1;
+		current = current->next;
 	}
-	else
-		return (NULL);
+	return (x);
 }

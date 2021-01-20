@@ -3,40 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:36:59 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/07 21:30:54 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/09 17:52:03 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *str, const char *fn, size_t n)
+char	*ft_strnstr(const char *big, const char *lit, unsigned int n)
 {
-	size_t	i;
-	int		k;
-	size_t	m;
+	int	x;
+	int	z;
 
-	i = 0;
-	k = 0;
-	m = 0;
-	if (fn[i] == '\0')
-		return ((char*)str);
-	while (str[i] != '\0')
+	if (lit[0] == '\0')
+		return ((char *)big);
+	x = 0;
+	while (big[x] && x < (int)n)
 	{
-		k = 0;
-		while (str[i + m] != '\0' && fn[m] != '\0' && k != 1 && (i + m < n))
-			if (fn[m] == str[i + m])
-				m++;
-			else
+		z = 0;
+		if (big[x] == lit[z])
+		{
+			while (x + z < (int)n && big[x + z] == lit[z])
 			{
-				k = 1;
-				m = 0;
+				z++;
+				if (!lit[z])
+					return ((char *)big + x);
 			}
-		if (fn[m] == '\0')
-			return ((char*)(str + i));
-		i++;
+		}
+		x++;
 	}
 	return (0);
 }

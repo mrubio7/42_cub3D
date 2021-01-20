@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_fabs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/22 16:22:01 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/22 16:39:30 by rfork            ###   ########.fr       */
+/*   Created: 2021/01/20 18:45:26 by mrubio            #+#    #+#             */
+/*   Updated: 2021/01/20 18:45:58 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isupper(int c)
+double	ft_abs(double num)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
+	if (num < 0.0)
+		return (num * -1.0);
+	return (num);
 }

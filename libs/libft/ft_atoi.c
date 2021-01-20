@@ -3,50 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 17:02:52 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/22 18:08:54 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/01 09:56:49 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/10 19:36:15 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static int	ft_check1(long long int a, const char *str, int i, int m)
+int		ft_atoi(const char *str)
 {
-	if ((((a * m) >= 922337203685477580) && ((str[i] - '0') > 7))
-	|| ((a * m >= 1000000000000000000) && str[i]))
-		return (-1);
-	else if ((((a * m) <= -922337203685477580) && ((str[i] - '0') > 8))
-	|| ((a * m <= -1000000000000000000) && str[i]))
-		return (0);
-	return (1);
-}
+	int				x;
+	long long int	num;
+	long long int	sig;
 
-int			ft_atoi(const char *str)
-{
-	long long int	a;
-	int				m;
-	int				i;
-
-	a = 0;
-	m = 1;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9')
-		m = -1;
-	if ((str[i] == '-' || str[i] == '+') && (str[i + 1] >= '0' \
-	&& str[i + 1] <= '9'))
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	x = 0;
+	sig = 1;
+	num = 0;
+	while (str[x] == 32 || str[x] == 10 || str[x] == 9
+	|| str[x] == 12 || str[x] == 13 || str[x] == 11)
+		x++;
+	if (str[x] == '-' || str[x] == '+')
 	{
-		if (ft_check1(a, str, i, m) == -1)
-			return (-1);
-		else if (ft_check1(a, str, i, m) == 0)
-			return (0);
-		a = a * 10 + (str[i] - '0');
-		i++;
+		if (str[x] == '-')
+			sig = -1;
+		x++;
 	}
-	return (a * m);
+	while (str[x] != '\0')
+	{
+		if (str[x] < 48 || 57 < str[x])
+			return (num * sig);
+		else
+			num = (num * 10) + (str[x] - '0');
+		x++;
+	}
+	return (num * sig);
 }

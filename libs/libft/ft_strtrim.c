@@ -3,76 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 14:30:13 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/13 14:56:46 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/27 19:54:10 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-static char	*ft_check2(void)
+static int		is_in_set(char c, char const *set)
 {
-	char *arr;
-
-	arr = (char *)malloc(sizeof(char) * (1));
-	if (arr)
+	while (*set)
 	{
-		arr[0] = '\0';
-		return (arr);
+		if (c == *set)
+			return (1);
+		set++;
 	}
-	else
-		return (NULL);
+	return (0);
 }
 
-static char	*ft_check1(char const *s, int start, int end)
+char			*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	char	*arr;
+	int				i;
+	unsigned int	outstr_size;
+	char			*outstr_start;
+	char			*outstr_end;
+	char			*outstr;
 
-	j = 0;
-	i = start;
-	arr = (char*)malloc(sizeof(char) * (end - start + 2));
-	if (arr)
-	{
-		while (i < (end + 1))
-		{
-			arr[j] = s[i];
-			j++;
-			i++;
-		}
-		arr[j] = '\0';
-		return (arr);
-	}
-	else
+	if (!s1 || !set)
 		return (NULL);
-}
-
-char		*ft_strtrim(char const *s)
-{
-	int		i;
-	int		start;
-	int		end;
-	char	*arr;
-
-	if (!s)
-		return (NULL);
-	i = -1;
-	start = 0;
-	end = 0;
-	while (s[++i] == ' ' || s[i] == ',' || s[i] == '\n' || s[i] == '\t')
-		start++;
-	while (s[i] != '\0')
-	{
-		if (s[i] != ' ' && s[i] != ',' && s[i] != '\n' && s[i] != '\t')
-			end = i;
+	i = 0;
+	while (s1[i] && is_in_set(s1[i], set))
 		i++;
-	}
-	if (start > end)
-		arr = ft_check2();
+	outstr_start = (char *)&s1[i];
+	if ((i = ft_strlen(s1) - 1) != -1)
+		while (i >= 0 && is_in_set(s1[i], set))
+			i--;
+	outstr_end = (char *)&s1[i];
+	if (!*s1 || outstr_end == outstr_start)
+		outstr_size = 2;
 	else
-		arr = ft_check1(s, start, end);
-	return (arr);
+		outstr_size = outstr_end - outstr_start + 2;
+	if (!(outstr = malloc(sizeof(char) * outstr_size)))
+		return (NULL);
+	ft_strlcpy(outstr, outstr_start, outstr_size);
+	return (outstr);
 }

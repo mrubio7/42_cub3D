@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:56:02 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/04 20:09:25 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/20 18:49:18 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int			management_dotcub_color(char *line)
 	x = 0;
 	while (line[x] < '0' || line[x] > '9')
 		x++;
-	str = ft_strsplit(line + x, ',');
-	r = atoi(str[0]);
-	g = atoi(str[1]);
-	b = atoi(str[2]);
+	str = ft_split(line + x, ',');
+	r = ft_atoi(str[0]);
+	g = ft_atoi(str[1]);
+	b = ft_atoi(str[2]);
 	if (management_dotcub_color_error(r, g, b) == 0)
 	{
 		if (line[0] == 'F')

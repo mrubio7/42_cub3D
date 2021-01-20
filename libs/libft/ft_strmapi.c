@@ -3,36 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 14:57:25 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/20 19:24:09 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/30 00:04:22 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int a, char b))
 {
-	int		i;
-	int		len;
-	char	*arr;
+	int		x;
+	int		size;
+	char	*str;
 
-	i = 0;
-	if (!s || !f)
+	if (!s)
 		return (NULL);
-	len = ft_strlen(s);
-	arr = (char *)malloc(sizeof(char) * len + 1);
-	if (arr)
+	size = ft_strlen(s);
+	x = 0;
+	if ((str = (char *)malloc(size + 1)) == NULL)
+		return (NULL);
+	while (x < size)
 	{
-		while (s[i] != '\0')
-		{
-			arr[i] = (*f)(i, s[i]);
-			i++;
-		}
-		arr[i] = '\0';
-		return (arr);
+		str[x] = f(x, s[x]);
+		x++;
 	}
-	else
-		return (NULL);
+	str[x] = '\0';
+	return (str);
 }

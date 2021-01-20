@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 17:50:08 by rfork             #+#    #+#             */
-/*   Updated: 2021/01/15 19:19:37 by mrubio           ###   ########.fr       */
+/*   Created: 2020/07/02 10:05:32 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/02 11:11:19 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
-	int i;
+	int x;
 
-	i = 0;
-	while (s[i] != '\0')
+	x = 0;
+	while (s[x])
 	{
-		if (s[i] == c)
-			return ((char *)(s + i) + 1);
-		i++;
+		if (s[x] == c)
+			return (s + x);
+		x++;
 	}
-	if (s[i] == c)
-		return ((char *)(s + i) + 1);
+	if (!c && s[x] == '\0')
+		return (s + x);
 	return (NULL);
 }

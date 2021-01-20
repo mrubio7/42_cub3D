@@ -3,49 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 13:30:52 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 20:17:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/19 20:38:47 by mrubio            #+#    #+#             */
+/*   Updated: 2020/08/03 11:51:33 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-static int		ft_len(int n)
+int		isneg(int n)
 {
-	int len;
-
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
-	{
-		len++;
-		n = n / 10;
-	}
-	return (len);
+	if (n < 0 || n == 0)
+		return (1);
+	return (0);
 }
 
-char			*ft_itoa(int n)
+int		longn(int n)
 {
-	int				len;
-	char			*nbr;
-	unsigned int	i;
+	int x;
 
-	len = ft_len(n);
-	if (!(nbr = ft_strnew(len)))
+	x = 0;
+	if (isneg(n) == 1)
+	{
+		x++;
+	}
+	while (n != 0)
+	{
+		n = n / 10;
+		x++;
+	}
+	return (x);
+}
+
+char	*ft_itoa(int n)
+{
+	int				l;
+	char			*str;
+	int				a;
+	unsigned int	nbr;
+
+	nbr = (n < 0) ? (unsigned int)-n : (unsigned int)n;
+	a = 0;
+	l = longn(n);
+	if ((str = (char *)malloc(l + 1)) == NULL)
 		return (NULL);
 	if (n < 0)
-		i = (unsigned int)(n * (-1));
-	else
-		i = (unsigned int)n;
-	while (len)
+		a = 1;
+	str[l] = '\0';
+	while (l > 0)
 	{
-		nbr[--len] = i % 10 + '0';
-		i = i / 10;
+		str[l - 1] = (nbr % 10) + 48;
+		nbr = nbr / 10;
+		l -= 1;
 	}
-	if (n < 0)
-		nbr[0] = '-';
-	return (nbr);
+	if (a == 1)
+		str[l] = '-';
+	return (str);
 }

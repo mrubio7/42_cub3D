@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/22 16:08:49 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/22 16:47:22 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/23 14:35:00 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/28 02:08:42 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int	ft_iscntrl(int c)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (((c >= 0) && (c <= 31)) || (c == 127))
-		return (1);
-	return (0);
+	t_list *curr;
+
+	while (*lst != NULL)
+	{
+		curr = *lst;
+		del((*lst)->content);
+		*lst = (*lst)->next;
+		free(curr);
+	}
 }

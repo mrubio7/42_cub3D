@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 14:03:09 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/06/30 11:45:23 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/27 19:47:39 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
-	size_t	i;
-	char	*arr;
+	unsigned int x;
 
-	i = 0;
-	arr = (char*)malloc(sizeof(char) * size);
-	if (arr)
+	x = 0;
+	if (!dest || !src)
+		return (0);
+	if (size != 0)
 	{
-		while (i < size)
+		while ((src[x] != '\0') && (x < size - 1))
 		{
-			arr[i] = '\0';
-			i++;
+			dest[x] = src[x];
+			x++;
 		}
-		return (arr);
+		dest[x] = '\0';
 	}
-	else
-		return (NULL);
+	while (src[x] != '\0')
+		x++;
+	return (x);
 }

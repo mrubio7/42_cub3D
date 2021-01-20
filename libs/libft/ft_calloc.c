@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 20:43:38 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/08 12:35:26 by mrubio            #+#    #+#             */
+/*   Updated: 2020/08/01 01:23:18 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-void	ft_putendl(char const *s)
+void	*ft_calloc(unsigned int item, unsigned int size)
 {
-	int i;
+	char	*res;
+	int		total;
+	int		x;
 
-	if (s)
+	total = item * size;
+	if (!(res = malloc(total)))
+		return (NULL);
+	x = 0;
+	while (total--)
 	{
-		i = 0;
-		while (s[i] != '\0')
-		{
-			write(1, &s[i], 1);
-			i++;
-		}
-		write(1, "\n", 1);
+		res[x] = '\0';
+		x++;
 	}
+	return ((void *)res);
 }

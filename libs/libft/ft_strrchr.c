@@ -3,39 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 17:50:29 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/16 15:10:08 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/27 20:18:42 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	int i;
-	int j;
-	int f;
+	int	x;
 
-	i = 0;
-	j = 0;
-	f = 0;
-	while (s[i] != '\0')
+	x = 0;
+	while (str[x] != '\0')
+		x++;
+	while ((str[x] != c) && (x > 0))
 	{
-		if (s[i] == c)
-		{
-			j = i;
-			f = 1;
-		}
-		i++;
+		x--;
+		if (str[x] == c)
+			return ((char *)str + x);
 	}
-	if (s[i] == c)
-	{
-		j = i;
-		f = 1;
-	}
-	if (f == 1)
-		return ((char*)(s + j));
+	if (!c && str[x] == '\0')
+		return ((char *)str + x);
 	return (NULL);
 }

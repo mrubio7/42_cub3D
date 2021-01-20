@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 19:24:02 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:12 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/23 14:30:28 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/27 20:14:16 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strcat(char *s1, const char *s2)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int i;
-	int j;
+	t_list *current;
 
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0')
+	current = *lst;
+	if (current == NULL)
+		*lst = new;
+	else
 	{
-		s1[i] = s2[j];
-		i++;
-		j++;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = new;
 	}
-	s1[i] = '\0';
-	return (s1);
 }

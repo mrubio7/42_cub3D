@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 14:16:56 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:12 by rfork            ###   ########.fr       */
+/*   Created: 2020/06/30 11:22:35 by mrubio            #+#    #+#             */
+/*   Updated: 2020/06/30 12:58:10 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *dest, int c, size_t n)
+void	*ft_memset(void *str, int c, unsigned int n)
 {
-	size_t i;
+	char *dest;
 
-	i = 0;
-	while (i < n)
+	dest = str;
+	while (n)
 	{
-		((char*)dest)[i] = (char)c;
-		i++;
+		*dest = c;
+		dest++;
+		n--;
 	}
-	return (dest);
+	return (str);
 }

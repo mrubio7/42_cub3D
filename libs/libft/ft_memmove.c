@@ -3,34 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 15:43:57 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/19 16:25:34 by rfork            ###   ########.fr       */
+/*   Created: 2020/06/30 09:20:04 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/29 23:47:44 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *str1, const void *str2, unsigned int n)
 {
-	unsigned char *d;
-	unsigned char *s;
+	int	x;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (dst == src)
-		return (dst);
-	if (d < s)
+	x = 0;
+	if (!str1 && !str2)
+		return (NULL);
+	if (str2 <= str1)
 	{
-		while (len--)
-			*d++ = *s++;
-		return (dst);
+		while ((int)n--)
+		{
+			(*(char *)(str1 + n)) = (*(const char *)(str2 + n));
+			x++;
+		}
 	}
 	else
-	{
-		while (len--)
-			*(d + len) = *(s + len);
-		return (dst);
-	}
+		while ((int)n--)
+		{
+			*(char *)(str1 + x) = *(const char *)(str2 + x);
+			x++;
+		}
+	return (str1);
 }

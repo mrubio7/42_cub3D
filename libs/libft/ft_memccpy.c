@@ -3,48 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfork <rfork@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 14:46:16 by rfork             #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:13 by rfork            ###   ########.fr       */
+/*   Created: 2020/07/01 11:33:38 by mrubio            #+#    #+#             */
+/*   Updated: 2020/07/02 10:56:21 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-void    *ft_memccpy(void *dst, const void *src, int c, size_t n)
+#include <stdlib.h>
+
+void	*ft_memccpy(void *dest, const void *src, int c, unsigned int n)
 {
-	unsigned char    *s;
-	unsigned char    *d;
-	unsigned char    b;
-	size_t            i;
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	b = (unsigned char)c;
-	i = 0;
-	while (i < n)
+	unsigned int	x;
+
+	x = 0;
+	while (x < n)
 	{
-		d[i] = s[i];
-		if (d[i] == b)
-			return (d + (i + 1));
-		i++;
+		*(unsigned char *)(dest + x) = *(unsigned char *)(src + x);
+		if (*(unsigned char *)(src + x) == (unsigned char)c)
+			return (dest + x + 1);
+		x++;
 	}
 	return (NULL);
 }
-
-//#include "libft.h"
-//
-//void	*ft_memccpy(void *dst, const void *src, int c,
-//		size_t n)
-//{
-//	size_t i;
-//
-//	i = 0;
-//	while (i < n)
-//	{
-//		((char*)dst)[i] = ((char*)src)[i];
-//		if (((char*)src)[i] == (char)c)
-//			return (&dst[i + 1]);
-//		i++;
-//	}
-//	return (NULL);
-//}
