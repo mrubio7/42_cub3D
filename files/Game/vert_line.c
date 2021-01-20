@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/19 23:18:47 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/20 16:16:35 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ray_hit_dda(t_map *map, t_ray *ray)
 		ray->mapY += ray->stepY;
 		ray->side = 1;
 	}
-	if (map->map[ray->mapY][ray->mapX] > '0')
+	if (map->map[ray->mapY][ray->mapX] > '0' \
+		&& map->map[ray->mapY][ray->mapX] < '3')
 		ray->hit = 1;
 }
 
