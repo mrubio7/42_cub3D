@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/20 16:16:35 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ void	calc_drawline(t_game *game, t_map *map, t_ray *ray, t_pj *pj)
 		game->perpWallDist = (ray->mapX - pj->posX + (1 - ray->stepX) / 2) / ray->rayDirX;
 	else
 		game->perpWallDist = (ray->mapY - pj->posY + (1 - ray->stepY) / 2) / ray->rayDirY;
-	game->lineHeight = (int)(map->res_heigth / game->perpWallDist);
-	game->drawStart = (-game->lineHeight / 2) + (map->res_heigth / 2);
-	if (game->drawStart < 0)
-		game->drawStart = 0;
-	game->drawEnd = (game->lineHeight / 2) + (map->res_heigth / 2);
-	if (game->drawEnd >= map->res_heigth)
-		game->drawEnd = map->res_heigth - 1;
+	game->lineH = (int)(map->resH / game->perpWallDist);
+	game->drawSt = (-game->lineH / 2) + (map->resH / 2);
+	if (game->drawSt < 0)
+		game->drawSt = 0;
+	game->drawEn = (game->lineH / 2) + (map->resH / 2);
+	if (game->drawEn >= map->resH)
+		game->drawEn = map->resH - 1;
 }
 
 int		v_line(t_all *all, int z)
 {
-	all->pj.cameraX = (2 * z) / (double)(all->map.res_width) - 1;
+	all->pj.cameraX = (2 * z) / (double)(all->map.resW) - 1;
 	all->ray.rayDirX = all->pj.dirX + all->pj.planeX * all->pj.cameraX;
 	all->ray.rayDirY = all->pj.dirY + all->pj.planeY * all->pj.cameraX;
 	init_dda_params(&all->ray, &all->pj);
@@ -85,6 +85,6 @@ int		v_line(t_all *all, int z)
 		ray_hit_dda(&all->map, &all->ray);
 	calc_drawline(&all->game, &all->map, &all->ray, &all->pj);
 	all->game.color = get_color_wall(&all->ray, all->map.map);
-	put_pixels(&all->vars, &all->game, &all->img, z, all->map.res_width);
+	put_pixels(all, z);
 	return (0);
 }

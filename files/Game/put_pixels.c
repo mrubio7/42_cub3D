@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/20 17:08:49 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/21 16:23:41 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,31 @@ void		my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void		put_pixels(t_vars *vars, t_game *game, t_img *img, int z, int res)
+void		put_pixels(t_all *all, int z)
 {
 	int x;
-	
+
 	x = 0;
-	while (x < game->drawStart)
+	if (all->game.lineH > all->map.resH)
+		all->game.lineH = all->map.resH;
+	while (x < all->game.drawEn && all->game.lineH < all->map.resH)
 	{
-		my_mlx_pixel_put(img, res-z, x, 0xBBBBBB);
+		my_mlx_pixel_put(&all->img, all->map.resW - z, x, all->map.color_f);
 		x++;
 	}
 	x = 0;
-	while (x < game->lineHeight)
+	while (x < all->game.lineH)
 	{
-		my_mlx_pixel_put(img, res-z, x + game->drawStart, game->color);
+		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
+						 all->game.color);
 		x++;
 	}
-	while ((x + game->drawStart) < 600)
+	while ((x + all->game.drawSt) < all->map.resH \
+			&& all->game.lineH < all->map.resH)
 	{
-		my_mlx_pixel_put(img, res-z, x+game->drawStart, 0x454545);
+		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
+						 all->map.color_c);
 		x++;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/20 15:43:27 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:30 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int		close_game_esc(int keycode, t_vars *vars)
 int		init_game(t_all all)
 {
 	all.pj = detect_start_pos(all.map.map, all.pj);
-	all.vars.win = mlx_new_window(all.vars.mlx, all.map.res_width, all.map.res_heigth, "cub3D");
-	all.img.img = mlx_new_image(all.vars.mlx, all.map.res_width, all.map.res_heigth);
+	all.vars.win = mlx_new_window(all.vars.mlx, all.map.resW, all.map.resH, "cub3D");
+	all.img.img = mlx_new_image(all.vars.mlx, all.map.resW, all.map.resH);
 	all.img.addr = mlx_get_data_addr(all.img.img, &all.img.bits_per_pixel, 
 								&all.img.line_length, &all.img.endian);
 	mlx_hook(all.vars.win, 17, 1L<<17, close_game_x, &all.vars);

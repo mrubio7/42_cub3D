@@ -5,8 +5,8 @@ WE ./texture/grey.xpm
 EA ./texture/brick.xpm
 
 S ./texture/barrel.xpm
-F 220,100,0
-C 225,30,0
+F 90,160,230
+C 50,50,50
 
     111111111111
     100000000001

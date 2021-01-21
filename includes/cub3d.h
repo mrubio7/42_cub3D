@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/20 15:49:36 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:16 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 
 typedef struct	s_map
 {
-	int			res_width;
-	int			res_heigth;
+	int			resW;
+	int			resH;
 	char		*path_N;
 	char		*path_E;
 	char		*path_S;
 	char		*path_W;
 	char		*path_I;
-	int			color_floor;
-	int			color_ceiling;
+	int			color_f;
+	int			color_c;
 	char		**map;
 }				t_map;
 
@@ -75,9 +75,9 @@ typedef struct	s_ray
 typedef struct	s_game
 {
 	double		perpWallDist;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			lineH;
+	int			drawSt;
+	int			drawEn;
 	int			color;
 }				t_game;
 
@@ -116,8 +116,7 @@ t_pj			detect_start_pos(char **map, t_pj pj);
 int				loop_frame(t_all *all);
 int				v_line(t_all *all, int z);
 int				get_color_wall(t_ray *ray, char **map);
-void			put_pixels(t_vars *vars, t_game *game, t_img *img, int z, int res);
 int				movement_pj(int keycode, t_all *all);
-void			put_empty_window(t_all *all);
+void			put_pixels(t_all *all, int z);
 
 #endif

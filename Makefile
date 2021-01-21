@@ -2,7 +2,7 @@ GCC = gcc -Wall -Wextra -Werror
 NAME = cub3D
 SRCS = $(shell find ./files -name "*.c")
 OBJS = $(SRCS:.c=.o)
-HEAD = -I ./libs/minilibx_macos/ -s
+HEAD = -I ./libs/minilibx_macos/
 MAKE_LIBS = ./libs/libft/libft.a ./libs/minilibx_macos/libmlx.a
 LIB := -L libs/libft -lft -L libs/minilibx_macos -lmlx -framework OpenGL -framework Appkit -lz
 DLIBMLX = libmlx.dylib
@@ -36,7 +36,7 @@ $(MAKE_LIBS):
 
 $(NAME): $(MAKE_LIBS) $(TEMPS) $(OBJS)
 	$(GCC) $(OBJS) $(LIB) $(HEAD) -o $(NAME)
-	@echo "${Green}\nCUB3D WAS COMPILED SUCCESSFULLY!\n${End}"
+	@echo "${Green}CUB3D WAS COMPILED SUCCESSFULLY!\n${End}"
 
 lldb:
 	gcc -g3 $(SRCS) $(LIB) $(HEAD) -o $(NAME)
