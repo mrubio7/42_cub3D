@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/21 16:23:41 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/21 20:25:03 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		put_pixels(t_all *all, int z)
 		all->game.lineH = all->map.resH;
 	while (x < all->game.drawEn && all->game.lineH < all->map.resH)
 	{
-		my_mlx_pixel_put(&all->img, all->map.resW - z, x, all->map.color_f);
+		my_mlx_pixel_put(&all->img, all->map.resW - z, x, all->map.color_c);
 		x++;
 	}
 	x = 0;
@@ -43,7 +43,7 @@ void		put_pixels(t_all *all, int z)
 			&& all->game.lineH < all->map.resH)
 	{
 		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
-						 all->map.color_c);
+						 all->map.color_f);
 		x++;
 	}
 }
