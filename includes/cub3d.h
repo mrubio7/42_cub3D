@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/21 16:20:16 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/21 20:21:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int				loop_frame(t_all *all);
 int				v_line(t_all *all, int z);
 int				get_color_wall(t_ray *ray, char **map);
 int				movement_pj(int keycode, t_all *all);
+double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
 
 #endif
