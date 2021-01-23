@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/21 16:25:06 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/23 12:46:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,5 @@ int		management_dotcub_errors(t_map *map, t_vars *vars)
 		ft_printf("ERROR: NO START POSITION IN MAP\n");
 		return (-1);
 	}
-	else
-		ft_printf("map.cub OK! :)\n");
 	return (1);
 }
