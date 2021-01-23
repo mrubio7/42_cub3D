@@ -6,24 +6,38 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/21 16:32:21 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/23 00:10:43 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
-int		close_game_x(int keycode, t_vars *vars)
+void	free_game(t_all *all)
 {
+	int y;
+
+	y = 0;
+	while (all->map.map[y])
+	{
+		free(all->map.map[y]);
+		y++;
+	}
+	free(all->map.map);
+}
+
+int		close_game_x(int keycode, t_all *all)
+{
+	free_game(all);
 	exit(0);
 	return (0);
 }
 
-int		close_game_esc(int keycode, t_vars *vars)
+int		close_game_esc(int keycode, t_all *all)
 {
 	if (keycode == KEY_ESC)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_window(all->vars.mlx, all->vars.win);
+		free_game(all);
 		exit(0);
 	}
 	return (1);

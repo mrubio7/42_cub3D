@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:29:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/11 01:34:30 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/23 10:18:41 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			management_dotcub_closedmap(char **map)
 		if (map[row][x] == '\0')
 		{
 			if (!(map[row + 1]))
-				break ;
+				return (1);
 			row++;
 			x = 0;
 		}
