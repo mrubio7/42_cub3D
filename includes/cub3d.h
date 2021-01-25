@@ -6,12 +6,15 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/23 11:54:58 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/25 20:13:34 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
+
+#define size_width 100
+#define size_height 100
 
 #include "keycodes.h"
 #include "../libs/minilibx_macos/mlx.h"
@@ -20,20 +23,19 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 typedef struct	s_map
 {
 	int			resW;
 	int			resH;
-	char		*path_N;
-	char		*path_E;
-	char		*path_S;
-	char		*path_W;
-	char		*path_I;
+	char		*path_N; //malloc & free
+	char		*path_E; //malloc & free
+	char		*path_S; //malloc & free
+	char		*path_W; //malloc & free
+	char		*path_I; //malloc & free
 	int			color_f;
 	int			color_c;
-	char		**map;
+	char		**map; //malloc & free
 }				t_map;
 
 typedef struct	s_img
@@ -81,6 +83,21 @@ typedef struct	s_game
 	int			color;
 }				t_game;
 
+typedef struct	s_wtex
+{
+	int			texNum;
+	double		wallX;
+	double		texStep;
+	double		texPos;
+	int			texX;
+	int			texY;
+	uint32_t	color;
+	int			**texture; //
+	int			*buff; //malloc
+	int			texH;
+	int			texW;
+}				t_wtex;
+
 
 typedef struct	s_vars
 {
@@ -96,6 +113,7 @@ typedef struct	s_all
 	t_ray		ray;
 	t_img		img;
 	t_map		map;
+	t_wtex		wtex;
 }				t_all;
 
 int				ft_get_next_line(int fd, char **line);
@@ -115,9 +133,10 @@ int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);
 int				loop_frame(t_all *all);
 int				v_line(t_all *all, int z);
-int				get_color_wall(t_ray *ray, char **map);
+void			texture_line(t_all *all);
 int				movement_pj(int keycode, t_all *all);
 double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
+
 
 #endif

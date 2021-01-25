@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/23 00:10:43 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/24 20:39:05 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	free_game(t_all *all)
 		free(all->map.map[y]);
 		y++;
 	}
+	free(all->map.path_N);
+	free(all->map.path_S);
+	free(all->map.path_E);
+	free(all->map.path_W);
+	free(all->map.path_I);
 	free(all->map.map);
 }
 

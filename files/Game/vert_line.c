@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/21 16:20:57 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/25 20:18:20 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		v_line(t_all *all, int z)
 	while (all->ray.hit == 0)
 		ray_hit_dda(&all->map, &all->ray);
 	calc_drawline(&all->game, &all->map, &all->ray, &all->pj);
-	all->game.color = get_color_wall(&all->ray, all->map.map);
+	texture_line(all);
 	put_pixels(all, z);
 	return (0);
 }
