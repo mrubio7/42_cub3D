@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/24 20:39:05 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/25 20:23:03 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		init_game(t_all all)
 	mlx_hook(all.vars.win, 17, 1L<<17, close_game_x, &all.vars);
 	mlx_key_hook(all.vars.win, close_game_esc, &all.vars);
 	mlx_hook(all.vars.win, 2, 1L<<0, movement_pj, &all);
+	read_textures(&all);
 	loop_frame(&all);
 	mlx_loop_hook(all.vars.mlx, loop_frame, &all);
 	mlx_loop(all.vars.mlx);
