@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/25 20:13:34 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/26 22:56:31 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #define size_width 100
 #define size_height 100
 
-#include "keycodes.h"
 #include "../libs/minilibx_macos/mlx.h"
 #include "../libs/libft/libft.h"
+#include "keycodes.h"
 #include <math.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -46,6 +46,18 @@ typedef struct	s_img
 	int			line_length;
 	int			endian;
 }				t_img;
+
+typedef struct	s_tximg
+{
+	void		*tx;
+	void		*tx_ptr;
+	char		*tx_addr;
+	int			tx_bpp;
+	int			tx_ll;
+	int			tx_endian;
+	int			width;
+	int			height;
+}				t_tximg;
 
 typedef struct	s_pj
 {
@@ -92,8 +104,7 @@ typedef struct	s_wtex
 	int			texX;
 	int			texY;
 	uint32_t	color;
-	int			**texture; //
-	int			*buff; //malloc
+	int			*buff; //
 	int			texH;
 	int			texW;
 }				t_wtex;
@@ -114,6 +125,7 @@ typedef struct	s_all
 	t_img		img;
 	t_map		map;
 	t_wtex		wtex;
+	t_tximg		tximg[6];
 }				t_all;
 
 int				ft_get_next_line(int fd, char **line);
@@ -133,6 +145,7 @@ int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);
 int				loop_frame(t_all *all);
 int				v_line(t_all *all, int z);
+int				load_textures(t_all *all);
 void			texture_line(t_all *all);
 int				movement_pj(int keycode, t_all *all);
 double			next_move(double pos, double step);
