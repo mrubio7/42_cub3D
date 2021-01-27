@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/26 22:56:31 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/27 23:27:48 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ typedef struct	s_img
 typedef struct	s_tximg
 {
 	void		*tx;
-	void		*tx_ptr;
-	char		*tx_addr;
+	int			*tx_addr;
 	int			tx_bpp;
 	int			tx_ll;
 	int			tx_endian;
@@ -103,8 +102,7 @@ typedef struct	s_wtex
 	double		texPos;
 	int			texX;
 	int			texY;
-	uint32_t	color;
-	int			*buff; //
+	int			*buff; //malloc
 	int			texH;
 	int			texW;
 }				t_wtex;

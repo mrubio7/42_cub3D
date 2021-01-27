@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixels.c                                       :+:      :+:    :+:   */
+/*   print_pixels.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/25 20:19:07 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/27 22:08:42 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void		put_pixels(t_all *all, int z)
 						 all->wtex.buff[x]);
 		x++;
 	}
-	free(all->wtex.buff);
 	while ((x + all->game.drawSt) < all->map.resH \
 			&& all->game.lineH < all->map.resH)
 	{

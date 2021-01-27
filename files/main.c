@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/25 20:21:29 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/27 21:14:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		main(int argc, char *argv[])
 	char	*line;
 	t_all	all;
 
-	fd = open(argv[1], O_RDONLY);
-	if (argc == 2)
+	fd = open("map.cub", O_RDONLY);
+	if (argc == 1)
 	{
 		all.map.map = (char **)malloc(size_width * size_height * sizeof(char *));
 		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
