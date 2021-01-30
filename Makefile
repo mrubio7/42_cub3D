@@ -36,10 +36,10 @@ start:
 	@echo "${YB}  A ${Y} Turn Left${End}"
 	@echo "${YB}  D ${Y} Turn Right\n${End}"
 	@echo "${YB}ESC ${Y} Close game${End}"
-	./cub3D
+	./cub3D map.cub
 
 files/%.o: %.c
-	$(GCC) --silent $(HEAD) $< 
+	$(GCC) $(HEAD) $< 
 
 $(MAKE_LIBS):
 	$(CLS)

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/23 00:10:43 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/28 16:30:50 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	free_game(t_all *all)
 		free(all->map.map[y]);
 		y++;
 	}
+	free(all->map.path_N);
+	free(all->map.path_S);
+	free(all->map.path_E);
+	free(all->map.path_W);
+	free(all->map.path_I);
 	free(all->map.map);
 }
 
@@ -53,8 +58,13 @@ int		init_game(t_all all)
 	mlx_hook(all.vars.win, 17, 1L<<17, close_game_x, &all.vars);
 	mlx_key_hook(all.vars.win, close_game_esc, &all.vars);
 	mlx_hook(all.vars.win, 2, 1L<<0, movement_pj, &all);
+	if (load_textures(&all) == -1)
+	{
+		ft_printf("ERROR LOADING TEXTURES\n");
+		return (0);
+	}
 	loop_frame(&all);
 	mlx_loop_hook(all.vars.mlx, loop_frame, &all);
 	mlx_loop(all.vars.mlx);
-	return (0);
+	return (1);
 }

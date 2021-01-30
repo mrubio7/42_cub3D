@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   loop_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/17 13:10:00 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/17 13:20:59 by mrubio           ###   ########.fr       */
+/*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
+/*   Updated: 2021/01/24 20:44:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void		init_camera_pos(t_pj *pj, double dirX, double dirY, double planeX, double planeY)
+int		loop_frame(t_all *all)
 {
-	pj->dirX = dirX;
-	pj->dirY = dirY;
-	pj->planeX = planeX;
-	pj->planeY = planeY;
+	int z;
+
+	z = 0;
+	while (z < all->map.resW)
+	{
+		mlx_clear_window(all->vars.mlx, all->vars.win);
+		v_line(all, z);
+		z++;
+	}
+	mlx_put_image_to_window(all->vars.mlx, all->vars.win, all->img.img, 0, 0);
+	return (0);
 }
