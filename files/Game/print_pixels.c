@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/27 22:08:42 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/30 12:37:18 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ void		put_pixels(t_all *all, int z)
 	{
 		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
 						 all->wtex.buff[x]);
+		all->wtex.buff[x] = 0;
 		x++;
 	}
+
+	free(all->wtex.buff);
 	while ((x + all->game.drawSt) < all->map.resH \
 			&& all->game.lineH < all->map.resH)
 	{

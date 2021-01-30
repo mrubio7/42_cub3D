@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/27 23:27:48 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/30 14:00:50 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "../libs/minilibx_macos/mlx.h"
 #include "../libs/libft/libft.h"
 #include "keycodes.h"
+#include <stdio.h>
+#include <errno.h>
 #include <math.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -50,7 +52,7 @@ typedef struct	s_img
 typedef struct	s_tximg
 {
 	void		*tx;
-	int			*tx_addr;
+	char		*tx_addr;
 	int			tx_bpp;
 	int			tx_ll;
 	int			tx_endian;
@@ -102,7 +104,7 @@ typedef struct	s_wtex
 	double		texPos;
 	int			texX;
 	int			texY;
-	int			*buff; //malloc
+	uint32_t	*buff; //malloc
 	int			texH;
 	int			texW;
 }				t_wtex;
@@ -123,7 +125,7 @@ typedef struct	s_all
 	t_img		img;
 	t_map		map;
 	t_wtex		wtex;
-	t_tximg		tximg[6];
+	t_tximg		*tximg;
 }				t_all;
 
 int				ft_get_next_line(int fd, char **line);
@@ -144,10 +146,9 @@ t_pj			detect_start_pos(char **map, t_pj pj);
 int				loop_frame(t_all *all);
 int				v_line(t_all *all, int z);
 int				load_textures(t_all *all);
-void			texture_line(t_all *all);
+void			texture_line(t_all *all, int z);
 int				movement_pj(int keycode, t_all *all);
 double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
-
 
 #endif
