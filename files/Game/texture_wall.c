@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/30 14:31:09 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/31 11:05:43 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 int			get_color_from_addr(t_all *all)
 {
-	int				index;
+	int				pos;
 	unsigned int	color;
-	int				octets;
+	int				octs;
 	int				i;
 
 	color = 0;
-	i = -1;
-	octets = all->tximg->tx_bpp >> 3;
-	index = (all->tximg->tx_ll * all->wtex.texY) + (octets * all->wtex.texX);
-	while (++i < octets - 1)
-		color += all->tximg[all->wtex.texNum].tx_addr[index++] << (i << 3);
+	i = 0;
+	octs = all->tximg->tx_bpp / 8;
+	pos = (all->tximg->tx_ll * all->wtex.texY) + (octs * all->wtex.texX);
+	while (i < octs)
+	{
+		color += all->tximg[all->wtex.texNum].tx_addr[pos++] << (i * 8);
+		i++;
+	}
 	return (color);
 }
 
@@ -32,23 +35,22 @@ int			orient_wall(t_all *all)
 {
 	int o;
 
-	if (all->ray.rayDirY >= 0 && all->ray.rayDirX >= 0 && all->ray.side == 0)
+	if (all->pj.dirY >= 0 && all->pj.dirX >= 0 && all->ray.side == 0)
 		o = 0;
-	else if (all->ray.rayDirY >= 0 && all->ray.rayDirX >= 0 && all->ray.side == 1)
+	else if (all->pj.dirY >= 0 && all->pj.dirX >= 0 && all->ray.side == 1)
 		o = 1;
-	else if (all->ray.rayDirY >= 0 && all->ray.rayDirX < 0 && all->ray.side == 0)
+	else if (all->pj.dirY >= 0 && all->pj.dirX < 0 && all->ray.side == 0)
 		o = 0;
-	else if (all->ray.rayDirY >= 0 && all->ray.rayDirX < 0 && all->ray.side == 1)
+	else if (all->pj.dirY >= 0 && all->pj.dirX < 0 && all->ray.side == 1)
 		o = 3;
-	else if (all->ray.rayDirY < 0 && all->ray.rayDirX > 0 && all->ray.side == 0)
+	else if (all->pj.dirY < 0 && all->pj.dirX > 0 && all->ray.side == 0)
 		o = 2;
-	else if (all->ray.rayDirY < 0 && all->ray.rayDirX >= 0 && all->ray.side == 1)
+	else if (all->pj.dirY < 0 && all->pj.dirX >= 0 && all->ray.side == 1)
 		o = 1;
-	else if (all->ray.rayDirY < 0 && all->ray.rayDirX < 0 && all->ray.side == 0)
+	else if (all->pj.dirY < 0 && all->pj.dirX < 0 && all->ray.side == 0)
 		o = 2;
-	else if (all->ray.rayDirY < 0 && all->ray.rayDirX < 0 && all->ray.side == 1)
+	else if (all->pj.dirY < 0 && all->pj.dirX < 0 && all->ray.side == 1)
 		o = 3;
-
 	return (o);
 }
 
