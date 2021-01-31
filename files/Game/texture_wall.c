@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/31 11:05:43 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/01/31 12:31:14 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,20 @@ int			get_color_from_addr(t_all *all)
 
 int			orient_wall(t_all *all)
 {
-	int o;
-
-	if (all->pj.dirY >= 0 && all->pj.dirX >= 0 && all->ray.side == 0)
-		o = 0;
-	else if (all->pj.dirY >= 0 && all->pj.dirX >= 0 && all->ray.side == 1)
-		o = 1;
-	else if (all->pj.dirY >= 0 && all->pj.dirX < 0 && all->ray.side == 0)
-		o = 0;
-	else if (all->pj.dirY >= 0 && all->pj.dirX < 0 && all->ray.side == 1)
-		o = 3;
-	else if (all->pj.dirY < 0 && all->pj.dirX > 0 && all->ray.side == 0)
-		o = 2;
-	else if (all->pj.dirY < 0 && all->pj.dirX >= 0 && all->ray.side == 1)
-		o = 1;
-	else if (all->pj.dirY < 0 && all->pj.dirX < 0 && all->ray.side == 0)
-		o = 2;
-	else if (all->pj.dirY < 0 && all->pj.dirX < 0 && all->ray.side == 1)
-		o = 3;
-	return (o);
+	if (all->ray.side == 0)
+	{
+		if (all->ray.rayDirX < 0)
+			return (0);
+		else
+			return (2);
+	}
+	else
+	{
+		if (all->ray.rayDirY < 0)
+			return (3);
+		else
+			return (1);
+	}
 }
 
 void		calc_pos_wall_hit(t_all *all)
