@@ -1,17 +1,17 @@
 R 800 600
-NO ./textures/blue.xpm
-SO ./textures/wood.xpm
-WE ./textures/grey.xpm
-EA ./textures/brick.xpm
+NO ./textures/WallBricks.xpm
+SO ./textures/WallClear.xpm
+WE ./textures/WallDoor.xpm
+EA ./textures/WallStones.xpm
 
-S ./textures/barrel.xpm
+S ./textures/Hook.xpm
 F 70,70,70
 C 200,200,200
 
 11111111111111111111
 10000000001000000001
 10000000000000000001
-10000000000000001001
+10000000000020001001
 10001000000000001001
 10000000000000000001
 1000000000N000000001

@@ -6,13 +6,13 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/31 12:31:14 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/01 13:59:14 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int			get_color_from_addr(t_all *all)
+int			get_color_from_addr(t_all *all, int n)
 {
 	int				pos;
 	unsigned int	color;
@@ -21,11 +21,11 @@ int			get_color_from_addr(t_all *all)
 
 	color = 0;
 	i = 0;
-	octs = all->tximg->tx_bpp / 8;
-	pos = (all->tximg->tx_ll * all->wtex.texY) + (octs * all->wtex.texX);
+	octs = all->tximg[n].tx_bpp / 8;
+	pos = (all->tximg[n].tx_ll * all->wtex.texY) + (octs * all->wtex.texX);
 	while (i < octs)
 	{
-		color += all->tximg[all->wtex.texNum].tx_addr[pos++] << (i * 8);
+		color += all->tximg[n].tx_addr[pos++] << (i * 8);
 		i++;
 	}
 	return (color);
@@ -76,7 +76,7 @@ void		calc_pos_tex_to_wall(t_all *all, int z)
 	{
 		all->wtex.texY = (int)all->wtex.texPos & (all->wtex.texH - 1);
 		all->wtex.texPos += all->wtex.texStep;
-		all->game.color = get_color_from_addr(all);
+		all->game.color = get_color_from_addr(all, all->wtex.texNum);
 		if (all->ray.side == 1)
 			all->game.color = (all->game.color >> 1) & 8355711;
 		all->wtex.buff[i] = all->game.color;

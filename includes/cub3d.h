@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/30 14:00:50 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/01 18:08:27 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,26 @@ typedef struct	s_game
 	int			color;
 }				t_game;
 
+typedef struct	s_spr
+{
+	int			*zbuffer;
+	int			*sp_ord;
+	int			*sp_dis;
+	double		spX;
+	double		spY;
+	double		invDet;
+	double		transformX;
+	double		transformY;
+	int			sp_screenX;
+	int			spH;
+	int			spW;
+	int			drawStY;
+	int			drawStX;
+	int			drawEnY;
+	int			drawEnX;
+	int			stripe;
+}				t_spr;
+
 typedef struct	s_wtex
 {
 	int			texNum;
@@ -126,6 +146,7 @@ typedef struct	s_all
 	t_map		map;
 	t_wtex		wtex;
 	t_tximg		*tximg;
+	t_spr		*spr;
 }				t_all;
 
 int				ft_get_next_line(int fd, char **line);
@@ -150,5 +171,11 @@ void			texture_line(t_all *all, int z);
 int				movement_pj(int keycode, t_all *all);
 double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
+
+int				get_color_from_addr(t_all *all, int n);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int				create_trgb(int t, int r, int g, int b);
+
+void			sprites(t_all *all, int z);
 
 #endif
