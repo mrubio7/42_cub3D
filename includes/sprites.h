@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop_frame.c                                  :+:      :+:    :+:   */
+/*   sprites.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/02 18:09:00 by mrubio           ###   ########.fr       */
+/*   Created: 2021/02/01 20:13:55 by mrubio            #+#    #+#             */
+/*   Updated: 2021/02/02 19:44:28 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#ifndef SPRITES_H
+#define	SPRITES_H
 
-int		loop_frame(t_all *all)
+typedef struct	s_spos
 {
-	int z;
+	double		x;
+	double		y;
+	int			texture;
+}				t_spos;
 
-	z = 0;
-	while (z < all->map.resW)
-	{
-		mlx_clear_window(all->vars.mlx, all->vars.win);
-		v_line(all, z);
-		z++;
-	}
-	get_sprites(all, z);
-	mlx_put_image_to_window(all->vars.mlx, all->vars.win, all->img.img, 0, 0);
-	mlx_do_sync(all->vars.mlx);
-	return (0);
-}
+#define numSprites 5
+
+t_spos sprites[0] = {20.5, 11.5, 10};
+t_spos sprites[1] = {18.5,4.5, 10};
+t_spos sprites[2] = {10.0,4.5, 10};
+t_spos sprites[3] = {10.0,12.5,10};
+t_spos sprites[4] = {3.5, 6.5, 10};
+
+#endif

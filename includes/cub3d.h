@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/01 18:08:27 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/02 18:09:20 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 #define size_width 100
 #define size_height 100
+#define MLX_SYNC_IMAGE_WRITABLE 1
+#define MLX_SYNC_WIN_FLUSH_CMD 2
+#define MLX_SYNC_WIN_CMD_COMPLETED 3
 
 #include "../libs/minilibx_macos/mlx.h"
 #include "../libs/libft/libft.h"
 #include "keycodes.h"
+#include "sprites.h"
 #include <stdio.h>
 #include <errno.h>
 #include <math.h>
@@ -99,7 +103,6 @@ typedef struct	s_game
 typedef struct	s_spr
 {
 	int			*zbuffer;
-	int			*sp_ord;
 	int			*sp_dis;
 	double		spX;
 	double		spY;
@@ -176,6 +179,6 @@ int				get_color_from_addr(t_all *all, int n);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				create_trgb(int t, int r, int g, int b);
 
-void			sprites(t_all *all, int z);
+void			get_sprites(t_all *all, int z);
 
 #endif

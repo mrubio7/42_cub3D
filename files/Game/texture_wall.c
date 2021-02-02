@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/01 13:59:14 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/01 20:35:12 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void		calc_pos_tex_to_wall(t_all *all, int z)
 		all->wtex.texY = (int)all->wtex.texPos & (all->wtex.texH - 1);
 		all->wtex.texPos += all->wtex.texStep;
 		all->game.color = get_color_from_addr(all, all->wtex.texNum);
-		if (all->ray.side == 1)
-			all->game.color = (all->game.color >> 1) & 8355711;
 		all->wtex.buff[i] = all->game.color;
 		i++;
 		y++;
