@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/01 20:35:12 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/03 19:48:02 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		calc_pos_wall_hit(t_all *all)
 	all->wtex.texX = (all->wtex.wallX * (double)all->wtex.texW);
 	if (all->ray.side == 0 && all->ray.rayDirX > 0)
 		all->wtex.texX = all->wtex.texW - all->wtex.texX - 1;
-	if (all->ray.side == 1 && all->ray.rayDirX < 0)
+	if (all->ray.side == 1 && all->ray.rayDirY < 0)
 		all->wtex.texX = all->wtex.texW - all->wtex.texX - 1;
 }
 

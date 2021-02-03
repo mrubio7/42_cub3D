@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/02 18:09:20 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/03 16:02:06 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 #define size_width 100
 #define size_height 100
-#define MLX_SYNC_IMAGE_WRITABLE 1
-#define MLX_SYNC_WIN_FLUSH_CMD 2
-#define MLX_SYNC_WIN_CMD_COMPLETED 3
+#define numSprites 5
 
 #include "../libs/minilibx_macos/mlx.h"
 #include "../libs/libft/libft.h"
@@ -117,6 +115,7 @@ typedef struct	s_spr
 	int			drawEnY;
 	int			drawEnX;
 	int			stripe;
+	uint32_t	*buff; //malloc
 }				t_spr;
 
 typedef struct	s_wtex
@@ -132,6 +131,12 @@ typedef struct	s_wtex
 	int			texW;
 }				t_wtex;
 
+typedef struct	s_spos
+{
+	double		x;
+	double		y;
+	int			tex;
+}				t_spos;
 
 typedef struct	s_vars
 {
@@ -149,7 +154,8 @@ typedef struct	s_all
 	t_map		map;
 	t_wtex		wtex;
 	t_tximg		*tximg;
-	t_spr		*spr;
+	t_spr		spr;
+	t_spos		*spos;
 }				t_all;
 
 int				ft_get_next_line(int fd, char **line);
@@ -180,5 +186,6 @@ void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				create_trgb(int t, int r, int g, int b);
 
 void			get_sprites(t_all *all, int z);
+void			put_sprites(t_all *all, int z);
 
 #endif
