@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/03 19:48:02 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/03 20:00:54 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int			orient_wall(t_all *all)
 	if (all->ray.side == 0)
 	{
 		if (all->ray.rayDirX < 0)
-			return (0);
+			return (3);
 		else
-			return (2);
+			return (1);
 	}
 	else
 	{
 		if (all->ray.rayDirY < 0)
-			return (3);
+			return (0);
 		else
-			return (1);
+			return (2);
 	}
 }
 

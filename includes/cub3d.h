@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/03 16:02:06 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/04 17:42:53 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct	s_game
 typedef struct	s_spr
 {
 	int			*zbuffer;
-	int			*sp_dis;
+	double		*sp_dis;
 	double		spX;
 	double		spY;
 	double		invDet;
@@ -115,7 +115,8 @@ typedef struct	s_spr
 	int			drawEnY;
 	int			drawEnX;
 	int			stripe;
-	uint32_t	*buff; //malloc
+	int			*sp_ord;
+	uint32_t	**buff; //malloc
 }				t_spr;
 
 typedef struct	s_wtex
