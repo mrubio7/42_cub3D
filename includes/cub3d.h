@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/04 17:42:53 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/05 19:27:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 #include "../libs/minilibx_macos/mlx.h"
 #include "../libs/libft/libft.h"
 #include "keycodes.h"
-#include "sprites.h"
 #include <stdio.h>
 #include <errno.h>
 #include <math.h>
@@ -114,7 +113,6 @@ typedef struct	s_spr
 	int			drawStX;
 	int			drawEnY;
 	int			drawEnX;
-	int			stripe;
 	int			*sp_ord;
 	uint32_t	**buff; //malloc
 }				t_spr;
