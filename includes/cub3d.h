@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/05 19:27:51 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/07 17:19:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct	s_ray
 	int			mapY;
 	int			side;
 	int			hit;
+	int			sprite;
 }				t_ray;
 
 typedef struct	s_game
@@ -114,7 +115,7 @@ typedef struct	s_spr
 	int			drawEnY;
 	int			drawEnX;
 	int			*sp_ord;
-	uint32_t	**buff; //malloc
+	uint32_t	*buff; //malloc
 }				t_spr;
 
 typedef struct	s_wtex
@@ -185,6 +186,8 @@ void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				create_trgb(int t, int r, int g, int b);
 
 void			get_sprites(t_all *all, int z);
+void			init_sprites(t_all *all);
 void			put_sprites(t_all *all, int z);
+void			draw_sprite(t_all *all, int x);
 
 #endif

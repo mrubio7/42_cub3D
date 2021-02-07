@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop_frame.c                                  :+:      :+:    :+:   */
+/*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/07 19:44:51 by mrubio           ###   ########.fr       */
+/*   Created: 2021/02/07 11:50:53 by mrubio            #+#    #+#             */
+/*   Updated: 2021/02/07 16:46:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		loop_frame(t_all *all)
+void		init_sprites(t_all *all)
 {
-	int z;
+	int x;
+	int y;
+	int sp;
 
-	z = 0;
-	all->spr.zbuffer = malloc(all->map.resW * sizeof(int));
-	while (z < all->map.resW)
+	sp = 0;
+	x = 0;
+	y = 0;
+	all->spos = malloc(sizeof(t_spos) * 100);
+	while (all->map.map[y] != '\0')
 	{
-		mlx_clear_window(all->vars.mlx, all->vars.win);
-		v_line(all, z);
-		all->spr.zbuffer[z] = all->game.perpWallDist;
-		get_sprites(all, z);
-		z++;
+		if (all->map.map[y][x] == '2')
+		{
+			all->spos[sp].x = x + 0.5;
+			all->spos[sp].y = y + 0.5;
+			all->spos[sp].tex = 4;
+			sp++;
+		}
+		x++;
+		if (all->map.map[y][x] == '\0')
+		{
+			x = 0;
+			y++;
+		}
 	}
-	mlx_put_image_to_window(all->vars.mlx, all->vars.win, all->img.img, 0, 0);
-	mlx_do_sync(all->vars.mlx);
-	return (0);
 }
