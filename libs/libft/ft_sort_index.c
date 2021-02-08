@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_sort_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 10:05:32 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 10:11:17 by mrubio           ###   ########.fr       */
+/*   Created: 2021/02/05 16:37:07 by mrubio            #+#    #+#             */
+/*   Updated: 2021/02/05 17:28:06 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strchr(char *s, int c)
+void	ft_sort_index(double *dis, int *ord, int size)
 {
-	int x;
+	int i;
+	int j;
 
-	x = 0;
-	while (s[x])
+	i = 0;
+	j = size;
+	while (i <= size)
+		ord[i++] = 0;
+	i = 0;
+	while (i <= size)
 	{
-		if (s[x] == c)
-			return (s + x);
-		x++;
+		dis[i] < dis[j] ? ord[i]++ : ord[i];
+		if (j == 0 && (i += 1) <= size)
+			j = size + 1;
+		j--;
 	}
-	return (NULL);
+	while (j <= size)
+	{
+		if (ord[j] == ord[j + 1])
+		{
+			ord[j]++;
+			j = 0;
+		}
+		else
+			j++;
+	}
 }

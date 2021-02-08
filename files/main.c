@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/29 17:39:37 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 10:45:15 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,13 @@
 
 int		main(int argc, char *argv[])
 {
-	int		fd;
-	int		nbytes;
-	char	*line;
 	t_all	all;
 
-	fd = open("map.cub", O_RDONLY);
-	if (argc == 1)
+	if (argc > 0)
 	{
-		all.map.map = (char **)malloc(size_width * size_height * sizeof(char *));
-		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
-		{
-			all.map = management_dotcub(line, all.map);
-			if (nbytes == 0)
-				break;
-		}
-		close(fd);
-		all.vars.mlx = mlx_init();
-		if (management_dotcub_errors(&all.map, &all.vars) == -1)
+		if (read_dotcub(&all, argv[1]) == -1)
 			return (0);
+		all.vars.mlx = mlx_init();
 		init_game(all);
 	}
 	else

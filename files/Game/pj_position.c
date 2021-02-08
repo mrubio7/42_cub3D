@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_utils.c                                       :+:      :+:    :+:   */
+/*   pj_position.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/23 15:15:53 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/05 17:38:09 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_pj		detect_start_pos(char **map, t_pj pj)
 		if ((pos = ft_strchr_one("NSEW", map[y][x])) != (char)NULL)
 		{
 			pj = dir_pos(pos, pj);
-			pj.posX = x;
+			pj.posX = x + 0.2;
 			pj.posY = y;
 			return (pj);
 		}

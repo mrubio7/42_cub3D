@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/01 13:59:14 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/07 16:33:16 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int			orient_wall(t_all *all)
 	if (all->ray.side == 0)
 	{
 		if (all->ray.rayDirX < 0)
-			return (0);
+			return (3);
 		else
-			return (2);
+			return (1);
 	}
 	else
 	{
 		if (all->ray.rayDirY < 0)
-			return (3);
+			return (0);
 		else
-			return (1);
+			return (2);
 	}
 }
 
@@ -59,7 +59,7 @@ void		calc_pos_wall_hit(t_all *all)
 	all->wtex.texX = (all->wtex.wallX * (double)all->wtex.texW);
 	if (all->ray.side == 0 && all->ray.rayDirX > 0)
 		all->wtex.texX = all->wtex.texW - all->wtex.texX - 1;
-	if (all->ray.side == 1 && all->ray.rayDirX < 0)
+	if (all->ray.side == 1 && all->ray.rayDirY < 0)
 		all->wtex.texX = all->wtex.texW - all->wtex.texX - 1;
 }
 
@@ -77,8 +77,6 @@ void		calc_pos_tex_to_wall(t_all *all, int z)
 		all->wtex.texY = (int)all->wtex.texPos & (all->wtex.texH - 1);
 		all->wtex.texPos += all->wtex.texStep;
 		all->game.color = get_color_from_addr(all, all->wtex.texNum);
-		if (all->ray.side == 1)
-			all->game.color = (all->game.color >> 1) & 8355711;
 		all->wtex.buff[i] = all->game.color;
 		i++;
 		y++;

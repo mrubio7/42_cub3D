@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/01 18:08:27 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 10:39:50 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #define size_width 100
 #define size_height 100
+#define numSprites 5
 
 #include "../libs/minilibx_macos/mlx.h"
 #include "../libs/libft/libft.h"
@@ -85,6 +86,7 @@ typedef struct	s_ray
 	int			mapY;
 	int			side;
 	int			hit;
+	int			sprite;
 }				t_ray;
 
 typedef struct	s_game
@@ -99,8 +101,7 @@ typedef struct	s_game
 typedef struct	s_spr
 {
 	int			*zbuffer;
-	int			*sp_ord;
-	int			*sp_dis;
+	double		*sp_dis;
 	double		spX;
 	double		spY;
 	double		invDet;
@@ -113,7 +114,8 @@ typedef struct	s_spr
 	int			drawStX;
 	int			drawEnY;
 	int			drawEnX;
-	int			stripe;
+	int			*sp_ord;
+	uint32_t	*buff; //malloc
 }				t_spr;
 
 typedef struct	s_wtex
@@ -129,6 +131,12 @@ typedef struct	s_wtex
 	int			texW;
 }				t_wtex;
 
+typedef struct	s_spos
+{
+	double		x;
+	double		y;
+	int			tex;
+}				t_spos;
 
 typedef struct	s_vars
 {
@@ -146,7 +154,8 @@ typedef struct	s_all
 	t_map		map;
 	t_wtex		wtex;
 	t_tximg		*tximg;
-	t_spr		*spr;
+	t_spr		spr;
+	t_spos		*spos;
 }				t_all;
 
 int				ft_get_next_line(int fd, char **line);
@@ -161,6 +170,7 @@ char			*management_dotcub_map(char *line);
 int				management_dotcub_errors(t_map *map, t_vars *vars);
 int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
+int				read_dotcub(t_all *all, char *argv);
 
 int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);
@@ -171,11 +181,15 @@ void			texture_line(t_all *all, int z);
 int				movement_pj(int keycode, t_all *all);
 double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
+void			move_left(t_pj *pj, t_map *map);
 
 int				get_color_from_addr(t_all *all, int n);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				create_trgb(int t, int r, int g, int b);
 
-void			sprites(t_all *all, int z);
+void			get_sprites(t_all *all, int z);
+void			init_sprites(t_all *all);
+void			put_sprites(t_all *all, int z);
+void			draw_sprite(t_all *all, int x);
 
 #endif
