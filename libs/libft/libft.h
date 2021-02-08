@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 12:12:13 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/20 18:46:55 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/05 17:29:16 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_abs(int num);
 double				ft_fabs(double num);
+void				ft_sort_index(double *dis, int *ord, int size);
 
 typedef struct		s_list
 {

@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   init_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 10:05:32 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 10:11:17 by mrubio           ###   ########.fr       */
+/*   Created: 2021/02/07 11:50:53 by mrubio            #+#    #+#             */
+/*   Updated: 2021/02/08 08:15:37 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../../includes/cub3d.h"
 
-char	*ft_strchr(char *s, int c)
+void		init_sprites(t_all *all)
 {
 	int x;
+	int y;
+	int sp;
 
+	sp = 0;
 	x = 0;
-	while (s[x])
+	y = 0;
+	all->spos = malloc(sizeof(t_spos) * 100);
+	while (all->map.map[y] != '\0')
 	{
-		if (s[x] == c)
-			return (s + x);
+		if (all->map.map[y][x] == '2')
+		{
+			all->spos[sp].x = x + 0.5;
+			all->spos[sp].y = y + 0.5;
+			all->spos[sp].tex = 4;
+			sp++;
+		}
 		x++;
+		if (all->map.map[y][x] == '\0')
+		{
+			x = 0;
+			y++;
+		}
 	}
-	return (NULL);
 }

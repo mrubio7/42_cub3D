@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/01 18:09:03 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 08:26:23 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@ void		my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void		put_ceiling(t_all *all, int z)
+void		put_f_and_c(t_all *all, int z, int x)
 {
-	int x;
-
+	while ((x + all->game.drawSt) < all->map.resH \
+			&& all->game.lineH < all->map.resH)
+	{
+		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
+						 all->map.color_f);
+		x++;
+	}
 	x = 0;
 	if (all->game.lineH > all->map.resH)
 		all->game.lineH = all->map.resH;
@@ -50,23 +55,11 @@ int			put_walls(t_all *all, int z)
 	return (x);
 }
 
-void		put_floor(t_all *all, int z, int x)
-{
-	while ((x + all->game.drawSt) < all->map.resH \
-			&& all->game.lineH < all->map.resH)
-	{
-		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
-						 all->map.color_f);
-		x++;
-	}
-}
-
 void		put_pixels(t_all *all, int z)
 {
 	int x;
 
 	x = 0;
-	put_ceiling(all, z);
+	put_f_and_c(all, z, x);
 	x = put_walls(all, z);
-	put_floor(all, z, x);
 }
