@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 09:27:46 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 10:24:27 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		management_dotcub_mapstart(char **map)
 	x = 0;
 	while (map[row][x])
 	{
-		if (ft_strchr("NEWS", map[row][x]) != NULL)
+		if ((ft_strchr("NEWS", map[row][x])))
 			return (1);
 		x++;
 		if (map[row][x] == '\0')

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 09:27:09 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 10:39:50 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ void			texture_line(t_all *all, int z);
 int				movement_pj(int keycode, t_all *all);
 double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
+void			move_left(t_pj *pj, t_map *map);
 
 int				get_color_from_addr(t_all *all, int n);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 10:05:32 by mrubio            #+#    #+#             */
-/*   Updated: 2020/07/02 11:11:19 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 10:11:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ char	*ft_strchr(char *s, int c)
 			return (s + x);
 		x++;
 	}
-	if (!c && s[x] == '\0')
-		return (s + x);
 	return (NULL);
 }
