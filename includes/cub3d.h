@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/07 17:19:17 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 09:27:09 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ char			*management_dotcub_map(char *line);
 int				management_dotcub_errors(t_map *map, t_vars *vars);
 int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
+int				read_dotcub(t_all *all, char *argv);
 
 int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);

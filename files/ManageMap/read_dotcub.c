@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_sprites.c                                     :+:      :+:    :+:   */
+/*   read_dotcub.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/07 11:50:53 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 08:15:37 by mrubio           ###   ########.fr       */
+/*   Created: 2021/02/08 09:12:38 by mrubio            #+#    #+#             */
+/*   Updated: 2021/02/08 09:28:05 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void		init_sprites(t_all *all)
+int			read_dotcub(t_all *all, char *argv)
 {
-	int x;
-	int y;
-	int sp;
+	int		fd;
+	int		nbytes;
+	char	*line;
 
-	sp = 0;
-	x = 0;
-	y = 0;
-	all->spos = malloc(sizeof(t_spos) * 100);
-	while (all->map.map[y] != '\0')
+	fd = open("map.cub", O_RDONLY);
+	all->map.map = (char **)malloc(size_width * size_height * sizeof(char **));
+	while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
 	{
-		if (all->map.map[y][x] == '2')
-		{
-			all->spos[sp].x = x + 0.5;
-			all->spos[sp].y = y + 0.5;
-			all->spos[sp].tex = 4;
-			sp++;
-		}
-		x++;
-		if (all->map.map[y][x] == '\0')
-		{
-			x = 0;
-			y++;
-		}
+		all->map = management_dotcub(line, all->map);
+		if (nbytes == 0)
+			break;
 	}
+		close(fd);
+	if (management_dotcub_errors(&all->map, &all->vars) == -1)
+			return (-1);
+	return (1);
 }

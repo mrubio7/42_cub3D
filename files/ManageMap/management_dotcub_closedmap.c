@@ -6,13 +6,13 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:29:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/07 12:02:10 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 09:25:19 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int			readmap_zero4dir(char **map, int row, int x)
+int			readmap_zero8dir(char **map, int row, int x)
 {
 	if (ft_strchr("210NEWS", map[row][x + 1]) == NULL)
 		return (-1);
@@ -44,7 +44,7 @@ int			management_dotcub_closedmap(char **map)
 			return (-1);
 		if (map[row][x] == '0')
 		{
-			if (readmap_zero4dir(map, row, x) == -1)
+			if (readmap_zero8dir(map, row, x) == -1)
 				return (-1);
 		}
 		x++;
@@ -56,5 +56,5 @@ int			management_dotcub_closedmap(char **map)
 			x = 0;
 		}
 	}
-	return (1);
+	return (-1);
 }
