@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:06:20 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 08:26:11 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 20:42:41 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,41 +33,46 @@ void		sprite_pos(t_all *all, int x)
 	all->spr.drawEnX = (all->spr.drawEnX >= all->map.resW) ? all->map.resW - 1 : all->spr.drawEnX;
 }
 
-void		sprite_calc_stripe(t_all *all, int z)
+void		sprite_calc_stripe(t_all *all)
 {
-	int y;
+	int stripe;
 	int d;
-	int i;
+	int y;
 
-	i = 0;
-	y = all->spr.drawStY;
-	all->wtex.texX = (int)(256 * (z - (-all->spr.spW / 2 + all->spr.sp_screenX)) * all->wtex.texW / all->spr.spW) / 256;
-	if (all->spr.transformY > 0 && z < all->map.resW && all->spr.transformY < all->spr.zbuffer[z] && z > all->spr.drawStX && z < all->spr.drawEnX)
+	stripe = all->spr.drawStX;
+	while (stripe < all->spr.drawEnX)
 	{
-		while (y < all->spr.drawEnY)
+		y = all->spr.drawStY;
+		all->wtex.texX = (int)(256 * (stripe - (-all->spr.spW / 2 + all->spr.sp_screenX)) * all->wtex.texW / all->spr.spW) / 256;
+		if (all->spr.transformY > 0 && stripe < all->map.resW && all->spr.transformY < all->spr.zbuffer[stripe] + 1)
 		{
-			d = (y) * 256 - all->map.resH * 128 + all->spr.spH * 128;
-			all->wtex.texY = ((d * all->wtex.texH) / all->spr.spH) / 256;
-			all->game.color = get_color_from_addr(all, 4);
-			if ((all->game.color & 0x00FFFFFF) != 0)
-				my_mlx_pixel_put(&all->img, all->map.resW - z, y, all->game.color);
-			i++;
-			y++;
+			while (y < all->spr.drawEnY)
+			{
+				d = (y) * 256 - all->map.resH * 128 + all->spr.spH * 128;
+				all->wtex.texY = ((d * all->wtex.texH) / all->spr.spH) / 256;
+				all->game.color = get_color_from_addr(all, 4);
+				if ((all->game.color & 0x00FFFFFF) != 0)
+					my_mlx_pixel_put(&all->img, all->map.resW - stripe, y, all->game.color);
+				y++;
+			}
 		}
+		stripe++;
 	}
 }
 
-void		get_sprites(t_all *all, int z)
+void		get_sprites(t_all *all)
 {
 	int p;
 
 	p = 0;
-	while (p <= 3)
+	ft_sort_index(all->spr.sp_dis, all->spr.sp_ord, numSprites);
+	while (p <= numSprites)
 	{
-		all->spr.sp_ord[p] = p;
 		all->spr.sp_dis[p] = ((all->pj.posX - all->spos[p].x) * (all->pj.posX - all->spos[p].x) + (all->pj.posY - all->spos[p].y) * (all->pj.posY - all->spos[p].y));
+		if ((all->spr.sp_dis[p] / 1) > 0.5)
+			all->spr.sp_dis[p] = 0.5;
 		sprite_pos(all, p);
-		sprite_calc_stripe(all, z);
+		sprite_calc_stripe(all);
 		p++;
 	}
 }

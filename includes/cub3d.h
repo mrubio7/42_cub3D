@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 10:39:50 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 19:43:05 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ int				get_color_from_addr(t_all *all, int n);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int				create_trgb(int t, int r, int g, int b);
 
-void			get_sprites(t_all *all, int z);
+void			get_sprites(t_all *all);
 void			init_sprites(t_all *all);
 void			put_sprites(t_all *all, int z);
 void			draw_sprite(t_all *all, int x);

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 09:37:05 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 20:10:00 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ int		init_game(t_all all)
 	mlx_hook(all.vars.win, 17, 1L<<17, close_game_x, &all.vars);
 	mlx_key_hook(all.vars.win, close_game_esc, &all.vars);
 	mlx_hook(all.vars.win, 2, 1L<<0, movement_pj, &all);
+	all.spr.zbuffer = malloc(all.map.resW * sizeof(int));
+	all.spr.sp_ord = malloc(numSprites * sizeof(int));
+	all.spr.sp_dis = malloc(numSprites * sizeof(double));
 	if (load_textures(&all) == -1)
 	{
 		ft_printf("ERROR LOADING TEXTURES\n");
 		return (0);
 	}
 	init_sprites(&all);
-	loop_frame(&all);
 	mlx_loop_hook(all.vars.mlx, loop_frame, &all);
 	mlx_loop(all.vars.mlx);
 	return (1);

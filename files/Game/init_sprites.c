@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:50:53 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 08:15:37 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/08 20:37:19 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void		init_sprites(t_all *all)
 	{
 		if (all->map.map[y][x] == '2')
 		{
-			all->spos[sp].x = x + 0.5;
-			all->spos[sp].y = y + 0.5;
+			all->spos[sp].x = x + 0.5f;
+			all->spos[sp].y = y + 0.5f;
 			all->spos[sp].tex = 4;
 			sp++;
 		}
