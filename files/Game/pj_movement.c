@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 20:53:43 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 11:29:50 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/09 17:05:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	move_s(t_pj *pj, t_map *map)
 		pj->posY += pj->dirY * -0.1;
 }
 
-void	move_a(t_pj *pj)
+void	move_arrow_left(t_pj *pj)
 {
 	double oldDirX;
 	double oldPlaneX;
@@ -51,7 +51,7 @@ void	move_a(t_pj *pj)
 	pj->planeY = oldPlaneX * sin(-0.05) + pj->planeY * cos(-0.05);
 }
 
-void	move_d(t_pj *pj)
+void	move_arrow_right(t_pj *pj)
 {
 	double oldDirX;
 	double oldPlaneX;
@@ -71,8 +71,12 @@ int		movement_pj(int keycode, t_all *all)
 	if (keycode == KEY_S)
 		move_s(&all->pj, &all->map);
 	if (keycode == KEY_A)
-		move_a(&all->pj);
+		move_left(&all->pj, &all->map);
 	if (keycode == KEY_D)
-		move_d(&all->pj);
+		move_right(&all->pj, &all->map);
+	if (keycode == KEY_ARROW_LEFT)
+		move_arrow_left(&all->pj);
+	if (keycode == KEY_ARROW_RIGHT)
+		move_arrow_right(&all->pj);
 	return (0);
 }

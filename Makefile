@@ -36,6 +36,7 @@ SRCS =	./files/GNL/get_next_line.c \
 		./files/Game/pj_position.c \
 		./files/Game/game_loop_frame.c \
 		./files/Game/pj_movement.c \
+		./files/Game/pj_movement_2.c \
 		./files/Game/game_vert_line.c \
 		./files/Game/print_pixels.c \
 		./files/Game/texture_wall.c \

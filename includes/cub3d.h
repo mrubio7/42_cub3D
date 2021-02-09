@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/09 07:43:00 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/09 17:05:33 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,8 @@ int				v_line(t_all *all, int z);
 int				load_textures(t_all *all);
 void			texture_line(t_all *all, int z);
 int				movement_pj(int keycode, t_all *all);
+void			move_left(t_pj *pj, t_map *map);
+void			move_right(t_pj *pj, t_map *map);
 double			next_move(double pos, double step);
 void			put_pixels(t_all *all, int z);
 void			move_left(t_pj *pj, t_map *map);
