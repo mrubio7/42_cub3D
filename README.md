@@ -10,7 +10,7 @@ The game uses Makefile and lib `Minilibx`.<br/>
 `make` to compile.<br/>
 `make start` compile and initialize the game with the key tutorial printed on terminal.
 
-You can modify `map.cub` to get diferent wall textures, sprite or wall.
+You can modify `map.cub` to get diferent wall textures, sprite or map.
 
 I'm working on it, for the moment im going like this:
 
