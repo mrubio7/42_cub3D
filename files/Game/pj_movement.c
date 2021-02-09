@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 20:53:43 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/09 17:05:17 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/09 17:25:55 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	move_w(t_pj *pj, t_map *map)
 
 void	move_s(t_pj *pj, t_map *map)
 {
-	if (map->map[(int)(pj->posY + (pj->dirY * -0.2))][(int)(pj->posX + (pj->dirX * -0.2))] != '1')
+	if (map->map[(int)(pj->posY - (pj->dirY * 0.2))][(int)(pj->posX - (pj->dirX * 0.2))] != '1')
 	{
-		pj->posY += pj->dirY * -0.1;
-		pj->posX += pj->dirX * -0.1;
+		pj->posY -= pj->dirY * 0.1;
+		pj->posX -= pj->dirX * 0.1;
 	}
-	else if ((map->map[(int)(pj->posY)][(int)(pj->posX + (pj->dirX * -0.2))] != '1'))
-		pj->posX += pj->dirX * -0.1;
-	else if (map->map[(int)(pj->posY + (pj->dirY * -0.2))][(int)(pj->posX)] != '1')
-		pj->posY += pj->dirY * -0.1;
+	else if ((map->map[(int)(pj->posY)][(int)(pj->posX - (pj->dirX * 0.2))] != '1'))
+		pj->posX -= pj->dirX * 0.1;
+	else if (map->map[(int)(pj->posY - (pj->dirY * 0.2))][(int)(pj->posX)] != '1')
+		pj->posY -= pj->dirY * 0.1;
 }
 
 void	move_arrow_left(t_pj *pj)
