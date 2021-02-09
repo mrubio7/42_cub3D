@@ -1,11 +1,51 @@
 GCC = gcc -Wall -Wextra -Werror
 NAME = cub3D
-SRCS = $(shell find ./files -name "*.c")
-OBJS = $(SRCS:.c=.o)
 HEAD = -I ./libs/minilibx_macos/
 MAKE_LIBS = ./libs/libft/libft.a ./libs/minilibx_macos/libmlx.a
 LIB := -L libs/libft -lft -L libs/minilibx_macos -lmlx -framework OpenGL -framework Appkit -lz
 DLIBMLX = libmlx.dylib
+
+SRCS =	./files/GNL/get_next_line.c \
+		./files/printf/ft_printf.c \
+		./files/printf/src/ft_info_flags.c \
+		./files/printf/src/ft_put_flag_hex.c \
+		./files/printf/src/ft_printf_utils.c \
+		./files/printf/src/ft_putnbr.c \
+		./files/printf/src/ft_put_flag_str.c \
+		./files/printf/src/ft_put_flag_mem.c \
+		./files/printf/src/ft_putnbr_abs.c \
+		./files/printf/src/ft_putchar.c \
+		./files/printf/src/ft_puthex.c \
+		./files/printf/src/ft_check_arg.c \
+		./files/printf/src/ft_put_flag_nbr.c \
+		./files/printf/src/ft_putstr.c \
+		./files/printf/src/ft_put_flag_char.c \
+		./files/printf/src/ft_putmem.c \
+		./files/ManageMap/management_dotcub_path.c \
+		./files/ManageMap/management_dotcub.c \
+		./files/ManageMap/read_dotcub.c \
+		./files/ManageMap/management_dotcub_errors.c \
+		./files/ManageMap/management_dotcub_map.c \
+		./files/ManageMap/management_dotcub_color.c \
+		./files/ManageMap/management_dotcub_closedmap.c \
+		./files/ManageMap/management_dotcub_res.c \
+		./files/Game/init_game.c \
+		./files/Game/texture_read.c \
+		./files/Game/sprites.c \
+		./files/Game/init_sprites.c \
+		./files/Game/pj_position.c \
+		./files/Game/game_loop_frame.c \
+		./files/Game/pj_movement.c \
+		./files/Game/game_vert_line.c \
+		./files/Game/print_pixels.c \
+		./files/Game/texture_wall.c \
+		./files/main.c
+OBJS = $(SRCS:.c=.o)
+
+SRCS_BONUS =	./files/Bonus/pj_movement_bonus.c \
+				
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
 
 ################## COLORS & UTILS
 CLS = clear
@@ -55,6 +95,13 @@ $(MAKE_LIBS):
 $(NAME): $(MAKE_LIBS) $(OBJS)
 	$(GCC) $(OBJS) $(LIB) $(HEAD) -o $(NAME)
 	@echo "${G}CUB3D WAS COMPILED SUCCESSFULLY!\n${End}"
+
+bonus: $(NAME)
+	@echo "${Y}Loading BONUS files...${End}"
+	rm -rf ./files/game/pj_movement.o
+	$(OBJS_BONUS)
+	@echo "${G}BONUS FILES WAS LOADED SUCCESSFULLY!\n${End}"
+
 
 debug: $(MAKE_LIBS) $(OBJS)
 	$(GCC) $(OBJS) $(LIB) -fsanitize=address $(HEAD) -o $(NAME)
