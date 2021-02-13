@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 10:24:27 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/13 17:25:40 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,17 @@ int		management_dotcub_errors(t_map *map, t_vars *vars)
 	r = 0;
 	if (management_dotcub_res_error(map->resW, map->resH, vars) == -1)
 	{
-		ft_printf("RESOLUTION ERROR\n");
+		perror("RESOLUTION ERROR");
 		return (-1);
 	}
 	else if (management_dotcub_closedmap(map->map) == -1)
 	{
-		ft_printf("MAP READ ERROR\n");
+		perror("MAP READ ERROR");
 		return (-1);
 	}
 	else if (management_dotcub_mapstart(map->map) == -1)
 	{
-		ft_printf("ERROR: NO START POSITION IN MAP\n");
+		perror("ERROR: NO START POSITION IN MAP");
 		return (-1);
 	}
 	return (1);

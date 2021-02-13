@@ -40,6 +40,8 @@ SRCS =	./files/GNL/get_next_line.c \
 		./files/Game/game_vert_line.c \
 		./files/Game/print_pixels.c \
 		./files/Game/texture_wall.c \
+		./files/Game/bmp_manage.c \
+		./files/Game/bmp_save.c \
 		./files/main.c
 OBJS = $(SRCS:.c=.o)
 

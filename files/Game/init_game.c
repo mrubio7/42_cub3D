@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 20:10:00 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/13 17:07:40 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int		init_game(t_all all)
 		return (0);
 	}
 	init_sprites(&all);
+	if (all.vars.bmp == 1)
+		save_bmp(&all);
 	mlx_loop_hook(all.vars.mlx, loop_frame, &all);
 	mlx_loop(all.vars.mlx);
 	return (1);

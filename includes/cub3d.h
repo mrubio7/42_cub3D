@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/09 17:05:33 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/13 17:14:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct	s_vars
 {
 	void		*mlx;
 	void		*win;
+	int			bmp;
 }				t_vars;
 
 typedef struct	s_all
@@ -171,6 +172,8 @@ int				management_dotcub_errors(t_map *map, t_vars *vars);
 int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
 int				read_dotcub(t_all *all, char *argv);
+
+void			save_bmp(t_all *all);
 
 int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);
