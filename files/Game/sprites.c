@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:06:20 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 20:42:41 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/16 17:57:37 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void		sprite_calc_stripe(t_all *all)
 	while (stripe < all->spr.drawEnX)
 	{
 		y = all->spr.drawStY;
-		all->wtex.texX = (int)(256 * (stripe - (-all->spr.spW / 2 + all->spr.sp_screenX)) * all->wtex.texW / all->spr.spW) / 256;
+		all->wtex.texX = (int)(256 * (stripe - (-all->spr.spW / 2 + all->spr.sp_screenX)) * all->wtex.texW / -all->spr.spW) / 256;
 		if (all->spr.transformY > 0 && stripe < all->map.resW && all->spr.transformY < all->spr.zbuffer[stripe] + 1)
 		{
 			while (y < all->spr.drawEnY)
 			{
 				d = (y) * 256 - all->map.resH * 128 + all->spr.spH * 128;
-				all->wtex.texY = ((d * all->wtex.texH) / all->spr.spH) / 256;
+				all->wtex.texY = ((d * all->wtex.texH) / all->spr.spH) / 256 + 1;
 				all->game.color = get_color_from_addr(all, 4);
 				if ((all->game.color & 0x00FFFFFF) != 0)
 					my_mlx_pixel_put(&all->img, all->map.resW - stripe, y, all->game.color);
