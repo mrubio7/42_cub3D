@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/14 13:06:26 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/16 19:04:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ typedef struct	s_map
 {
 	int			resW;
 	int			resH;
-	char		*path_N; //malloc & free
-	char		*path_E; //malloc & free
-	char		*path_S; //malloc & free
-	char		*path_W; //malloc & free
-	char		*path_I; //malloc & free
+	char		*path_N;
+	char		*path_E;
+	char		*path_S;
+	char		*path_W;
+	char		*path_I;
 	int			color_f;
 	int			color_c;
-	char		**map; //malloc & free
+	char		**map;
 }				t_map;
 
 typedef struct	s_img
@@ -115,7 +115,7 @@ typedef struct	s_spr
 	int			drawEnY;
 	int			drawEnX;
 	int			*sp_ord;
-	uint32_t	*buff; //malloc
+	uint32_t	*buff;
 }				t_spr;
 
 typedef struct	s_wtex
@@ -126,7 +126,7 @@ typedef struct	s_wtex
 	double		texPos;
 	int			texX;
 	int			texY;
-	uint32_t	*buff; //malloc
+	uint32_t	*buff;
 	int			texH;
 	int			texW;
 }				t_wtex;

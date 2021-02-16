@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:03:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/16 17:19:58 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/16 21:01:25 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,14 @@ int		get_color(t_all *all, int x, int y, int pad)
 	o = 24;
 	octs = all->img.bits_per_pixel / 8;
 	pos = (all->img.line_length * y) + (octs * x);
-
 	color += all->img.addr[pos] << (0);
-	color += all->img.addr[pos+1] << (8);
-	color += all->img.addr[pos+2] << (16);
-	color += all->img.addr[pos+3] << (24);
-
+	color += all->img.addr[pos + 1] << (8);
+	color += all->img.addr[pos + 2] << (16);
+	color += all->img.addr[pos + 3] << (24);
 	return (color);
 }
 
-int		bmp_header(int fd, int h, int w, int nbpr, int pad)
+int		bmp_header(int fd, t_map *map, int nbpr, int pad)
 {
 	unsigned char	head[54];
 	unsigned int	*size;
@@ -59,9 +57,9 @@ int		bmp_header(int fd, int h, int w, int nbpr, int pad)
 	size = (unsigned int *)&head[2];
 	wid = (unsigned int *)&head[18];
 	hei = (unsigned int *)&head[22];
-	*size = 54 + (nbpr + pad) * h;
-	*wid = w;
-	*hei = h;
+	*size = 54 + (nbpr + pad) * map->resH;
+	*wid = map->resW;
+	*hei = map->resH;
 	return (!(write(fd, head, 54) < 0));
 }
 
@@ -102,7 +100,7 @@ int		save_bmp(t_all *all)
 	padsize = (nbpr - 4) % 4;
 	if ((fd = open("screenshot.bmp", O_WRONLY | O_CREAT, 0666 | O_TRUNC | O_APPEND)) < 0)
 		return (0);
-	bmp_header(fd, all->map.resH, all->map.resW,nbpr, padsize);
+	bmp_header(fd, &all->map, nbpr, padsize);
 	bmp_pix(fd, all, padsize);
 	close(fd);
 	mlx_destroy_window(all->vars.mlx, all->vars.win);
