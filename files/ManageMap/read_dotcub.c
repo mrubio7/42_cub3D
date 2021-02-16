@@ -6,20 +6,20 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 09:12:38 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/13 17:24:50 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/16 17:20:55 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int			read_dotcub(t_all *all, char *argv)
+int			read_dotcub(t_all *all, char *mapname)
 {
 	int		fd;
 	int		nbytes;
 	char	*line;
 
-	fd = open(argv, O_RDONLY);
-	if (fd > 0)
+	fd = open(mapname, O_RDONLY);
+	if (fd > 1)
 	{
 		all->map.map = (char **)malloc(size_width * size_height * sizeof(char **));
 		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
@@ -33,6 +33,6 @@ int			read_dotcub(t_all *all, char *argv)
 				return (-1);
 		return (1);
 	}
-	perror("Error");
+	perror("Map error");
 	return (-1);
 }

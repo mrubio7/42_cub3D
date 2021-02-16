@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/13 17:14:57 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/14 13:06:26 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
 int				read_dotcub(t_all *all, char *argv);
 
-void			save_bmp(t_all *all);
+int				save_bmp(t_all *all);
 
 int				init_game(t_all all);
 t_pj			detect_start_pos(char **map, t_pj pj);
@@ -196,5 +196,6 @@ void			get_sprites(t_all *all);
 void			init_sprites(t_all *all);
 void			put_sprites(t_all *all, int z);
 void			draw_sprite(t_all *all, int x);
+void			free_game(t_all *all);
 
 #endif

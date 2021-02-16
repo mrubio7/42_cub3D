@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 22:21:07 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/21 16:24:14 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/16 17:25:13 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_map		management_dotcub_res(char *line, t_map *map)
 		map->resH = (map->resH * 10) + (int)line[x] - 48;
 		x++;
 	}
+	while ((map->resW % 4) != 0)
+		map->resW--;
 	return (*map);
 }

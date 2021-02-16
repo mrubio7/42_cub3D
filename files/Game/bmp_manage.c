@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:31:28 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/13 17:05:17 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/13 20:46:21 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int			bmp_manage(char *str)
 		x++;
 	bmp = ft_strncmp("--save", str + x, 6);
 	if (bmp == 0)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
