@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:03:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/16 21:01:25 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/16 21:14:34 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ int		save_bmp(t_all *all)
 	loop_frame(all);
 	nbpr = all->map.resW * (all->img.bits_per_pixel / 8);
 	padsize = (nbpr - 4) % 4;
-	if ((fd = open("screenshot.bmp", O_WRONLY | O_CREAT, 0666 | O_TRUNC | O_APPEND)) < 0)
+	if ((fd = open("screenshot.bmp", O_WRONLY | O_CREAT, 0666 |
+									O_TRUNC | O_APPEND)) < 0)
 		return (0);
 	bmp_header(fd, &all->map, nbpr, padsize);
 	bmp_pix(fd, all, padsize);

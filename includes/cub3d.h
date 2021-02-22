@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/16 19:04:51 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 19:38:24 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,8 @@ typedef struct	s_all
 int				ft_get_next_line(int fd, char **line);
 int				ft_printf(const char *str, ...);
 
-t_map			management_dotcub(char *line, t_map map);
-t_map			management_dotcub_res(char *line, t_map *map);
+int				management_dotcub(char *line, t_map *map);
+void			management_dotcub_res(char *line, t_map *map);
 char			*management_dotcub_path(char *line);
 char			*management_dotcub_path_sprite(char *line);
 int				management_dotcub_color(char *line);
@@ -175,7 +175,7 @@ int				read_dotcub(t_all *all, char *argv);
 
 int				save_bmp(t_all *all);
 
-int				init_game(t_all all);
+int				init_game(t_all *all);
 t_pj			detect_start_pos(char **map, t_pj pj);
 int				loop_frame(t_all *all);
 int				v_line(t_all *all, int z);

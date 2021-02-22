@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/16 17:24:36 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:14:08 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int		management_dotcub_res_error(int width, int heigth, t_vars *vars)
 {
-	int sizX;
-	int sizY;
-	
-	mlx_get_screen_size(vars->mlx, &sizX, &sizY);
-	if (width > sizX || heigth > sizY)
-	{
-		ft_printf("MAP.CUB RESOLUTION: %d x %d\n", width, heigth);
-		ft_printf("YOU ARE USING: %d x %d\n", sizX, sizY);
+	int sizx;
+	int sizy;
+
+	mlx_get_screen_size(vars->mlx, &sizx, &sizy);
+	if (width > sizx || heigth > sizy)
 		return (-1);
-	}
 	return (1);
 }
 
@@ -33,20 +29,11 @@ int		management_dotcub_color_error(int r, int g, int b)
 
 	x = 0;
 	if (r > 255 || r < 0)
-	{
-		ft_printf(" - COLOR RED: OUT OF RANGE: %d/255\n", r);
 		x++;
-	}
 	if (g > 255 || g < 0)
-	{
-		ft_printf(" - COLOR GREEN: OUT OF RANGE: %d/255\n", g);
 		x++;
-	}
 	if (b > 255 || b < 0)
-	{
-		ft_printf(" - COLOR BLUE: OUT OF RANGE: %d/255\n", b);
 		x++;
-	}
 	if (x > 0)
 		return (0);
 	return (1);
@@ -77,9 +64,6 @@ int		management_dotcub_mapstart(char **map)
 
 int		management_dotcub_errors(t_map *map, t_vars *vars)
 {
-	int r;
-
-	r = 0;
 	if (management_dotcub_res_error(map->resW, map->resH, vars) == -1)
 	{
 		perror("RESOLUTION ERROR");

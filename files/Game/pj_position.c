@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 20:30:39 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:05:24 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ t_pj		dir_pos(char pos, t_pj pj)
 
 t_pj		detect_start_pos(char **map, t_pj pj)
 {
-	char pos;
-	int x;
-	int y;
+	char	pos;
+	int		x;
+	int		y;
 
 	x = 0;
 	y = 0;

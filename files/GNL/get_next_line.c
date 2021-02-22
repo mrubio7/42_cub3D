@@ -6,12 +6,11 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 11:05:05 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/02 22:02:43 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:16:17 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 void	*ft_freemem(void *mem, void *ret)
 {
@@ -22,9 +21,9 @@ void	*ft_freemem(void *mem, void *ret)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int x;
-	int z;
-	char *str;
+	int		x;
+	int		z;
+	char	*str;
 
 	x = 0;
 	z = 0;
@@ -41,18 +40,19 @@ char	*ft_strjoin(char *s1, char *s2)
 
 int		ft_get_next_line(int fd, char **line)
 {
-	int bytes;
-	char *buff;
-	char *temp;
+	int		bytes;
+	char	*buff;
+	char	*temp;
 
-	if (!(buff = (char *)malloc(sizeof(char)* 2)) || !(*line = (char *)malloc(sizeof(char)* 1)))
+	if (!(buff = (char *)malloc(sizeof(char) * 2)) || \
+				!(*line = (char *)malloc(sizeof(char) * 1)))
 		return (-1);
 	(*line)[0] = '\0';
 	while ((bytes = read(fd, buff, 1)) > 0)
 	{
 		buff[bytes] = '\0';
 		if (buff[0] == '\n' || buff[0] == '\0')
-			break;
+			break ;
 		temp = ft_strjoin(*line, buff);
 		*line = ft_freemem(*line, temp);
 	}

@@ -6,13 +6,13 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 22:21:07 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/16 17:25:13 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:08:31 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_map		management_dotcub_res(char *line, t_map *map)
+void		management_dotcub_res(char *line, t_map *map)
 {
 	int x;
 
@@ -32,5 +32,4 @@ t_map		management_dotcub_res(char *line, t_map *map)
 	}
 	while ((map->resW % 4) != 0)
 		map->resW--;
-	return (*map);
 }

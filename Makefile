@@ -1,4 +1,4 @@
-GCC = gcc -Wall -Wextra -Werror
+GCC = gcc -Wall -Wextra -Werror -g
 NAME = cub3D
 HEAD = -I ./libs/minilibx_macos/
 MAKE_LIBS = ./libs/libft/libft.a ./libs/minilibx_macos/libmlx.a
@@ -45,11 +45,6 @@ SRCS =	./files/GNL/get_next_line.c \
 		./files/main.c
 OBJS = $(SRCS:.c=.o)
 
-SRCS_BONUS =	./files/Bonus/pj_movement_bonus.c \
-				
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
-
 ################## COLORS & UTILS
 CLS = clear
 YB = \033[33;1m
@@ -76,8 +71,10 @@ start:
 	@echo "${GB}STARTING THE GAME!!\n${End}"
 	@echo "${YB}  W ${Y} Move Forward${End}"
 	@echo "${YB}  S ${Y} Move Backward${End}"
-	@echo "${YB}  A ${Y} Turn Left${End}"
-	@echo "${YB}  D ${Y} Turn Right\n${End}"
+	@echo "${YB}  A ${Y} Move Left${End}"
+	@echo "${YB}  D ${Y} Move Right${End}"
+	@echo "${YB}  ->${Y} Turn Left${End}"
+	@echo "${YB} <- ${Y} Turn Right\n${End}"
 	@echo "${YB}ESC ${Y} Close game${End}"
 	./cub3D map.cub
 
@@ -109,7 +106,7 @@ bonus: $(NAME)
 debug: $(MAKE_LIBS) $(OBJS)
 	$(GCC) $(OBJS) $(LIB) -fsanitize=address $(HEAD) -o $(NAME)
 	$(CLS)
-	@echo "${B}Sanitize activated!\n${End}"
+	@echo "${G}Sanitize activated!\n${End}"
 
 lldb:
 	gcc -g3 $(SRCS) $(LIB) $(HEAD) -o $(NAME)

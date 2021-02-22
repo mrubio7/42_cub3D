@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:56:02 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/20 18:49:18 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:14:35 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int			to_hex(int nb)
 	return (res);
 }
 
-int		create_trgb(int t, int r, int g, int b)
+int			create_trgb(int t, int r, int g, int b)
 {
-	return(t << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 int			dec_to_color_int(int t, int r, int g, int b)
@@ -53,19 +53,18 @@ int			dec_to_color_int(int t, int r, int g, int b)
 	return (t << 24 | hex_r << 16 | hex_g << 8 | hex_b);
 }
 
-int		get_t(int trgb)
+int			get_t(int trgb)
 {
 	return (trgb & (0xFF << 16));
 }
 
 int			management_dotcub_color(char *line)
 {
-	int x;
-	int r;
-	int g;
-	int b;
-	char **str;
-	int trgb;
+	int		x;
+	int		r;
+	int		g;
+	int		b;
+	char	**str;
 
 	x = 0;
 	while (line[x] < '0' || line[x] > '9')
@@ -82,6 +81,5 @@ int			management_dotcub_color(char *line)
 			ft_printf("CEILING COLOR ERROR\n");
 		return (0);
 	}
-	trgb = create_trgb(0, r, g, b);
-	return (trgb);
+	return (create_trgb(0, r, g, b));
 }

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/12 17:01:03 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:06:24 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_dda_params(t_ray *ray, t_pj *pj)
 	}
 }
 
-void	ray_hit_dda(t_map *map, t_ray *ray)
+void	ray_hit_dda(char **map, t_ray *ray)
 {
 	if (ray->sideDistX < ray->sideDistY)
 	{
@@ -55,16 +55,18 @@ void	ray_hit_dda(t_map *map, t_ray *ray)
 		ray->mapY += ray->stepY;
 		ray->side = 1;
 	}
-	if (map->map[ray->mapY][ray->mapX] == '1')
+	if (map[ray->mapY][ray->mapX] == '1')
 		ray->hit = 1;
 }
 
 void	calc_drawline(t_game *game, t_map *map, t_ray *ray, t_pj *pj)
 {
 	if (ray->side == 0)
-		game->perpWallDist = (ray->mapX - pj->posX + (1 - ray->stepX) / 2) / ray->rayDirX;
+		game->perpWallDist = (ray->mapX - pj->posX +\
+							(1 - ray->stepX) / 2) / ray->rayDirX;
 	else
-		game->perpWallDist = (ray->mapY - pj->posY + (1 - ray->stepY) / 2) / ray->rayDirY;
+		game->perpWallDist = (ray->mapY - pj->posY +\
+							(1 - ray->stepY) / 2) / ray->rayDirY;
 	game->lineH = (int)(map->resH / game->perpWallDist);
 	game->drawSt = (-game->lineH / 2) + (map->resH / 2);
 	if (game->drawSt < 0)
@@ -81,9 +83,10 @@ int		v_line(t_all *all, int z)
 	all->ray.rayDirY = all->pj.dirY + all->pj.planeY * all->pj.cameraX;
 	init_dda_params(&all->ray, &all->pj);
 	while (all->ray.hit == 0)
-		ray_hit_dda(&all->map, &all->ray);
+		ray_hit_dda(all->map.map, &all->ray);
 	calc_drawline(&all->game, &all->map, &all->ray, &all->pj);
 	texture_line(all, z);
 	put_pixels(all, z);
+	free(all->wtex.buff);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 12:38:41 by mrubio            #+#    #+#             */
-/*   Updated: 2021/01/28 19:56:49 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:10:57 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char		*management_dotcub_path(char *line)
 {
-	int x;
-	int z;
-	char *str;
+	int		x;
+	int		z;
+	char	*str;
 
 	x = 0;
 	while (line[x] != '.')
@@ -35,9 +35,9 @@ char		*management_dotcub_path(char *line)
 
 char		*management_dotcub_path_sprite(char *line)
 {
-	int x;
-	int z;
-	char *str;
+	int		x;
+	int		z;
+	char	*str;
 
 	x = 0;
 	while (line[x] != '.')

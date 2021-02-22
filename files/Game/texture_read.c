@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 20:26:23 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 20:08:06 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 19:36:13 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int		read_tex(t_vars *vars, t_tximg *tximg, char *path)
 {
-	if (!(tximg->tx = mlx_xpm_file_to_image(vars->mlx, path, &(tximg->width), &(tximg->height))))
+	if (!(tximg->tx = mlx_xpm_file_to_image(vars->mlx, path,
+											&(tximg->width), &(tximg->height))))
 		return (-1);
-	tximg->tx_addr = mlx_get_data_addr(tximg->tx, &(tximg->tx_bpp), &(tximg->tx_ll), &(tximg->tx_endian));
+	tximg->tx_addr = mlx_get_data_addr(tximg->tx, &(tximg->tx_bpp),
+									&(tximg->tx_ll), &(tximg->tx_endian));
 	return (0);
 }
 

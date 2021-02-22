@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:07:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/15 12:12:16 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 20:07:51 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,18 @@ int			orient_wall(t_all *all)
 void		calc_pos_wall_hit(t_all *all)
 {
 	if (all->ray.side == 0)
-		all->wtex.wallX = all->pj.posY + all->game.perpWallDist * all->ray.rayDirY;
+		all->wtex.wallX = all->pj.posY + all->game.perpWallDist * \
+						all->ray.rayDirY;
 	else
-		all->wtex.wallX = all->pj.posX + all->game.perpWallDist * all->ray.rayDirX;
+		all->wtex.wallX = all->pj.posX + all->game.perpWallDist * \
+						all->ray.rayDirX;
 	all->wtex.wallX -= floor((all->wtex.wallX));
 	all->wtex.texX = (all->wtex.wallX * (double)all->wtex.texW);
 	if (all->ray.side == 0 && all->ray.rayDirX > 0)
 		all->wtex.texX = all->wtex.texW - all->wtex.texX - 1;
 	if (all->ray.side == 1 && all->ray.rayDirY < 0)
 		all->wtex.texX = all->wtex.texW - all->wtex.texX - 1;
+	all->wtex.texX = (double)all->wtex.texW - all->wtex.texX;
 }
 
 void		calc_pos_tex_to_wall(t_all *all, int z)
@@ -70,8 +73,9 @@ void		calc_pos_tex_to_wall(t_all *all, int z)
 
 	i = 0;
 	y = all->game.drawSt;
-	all->wtex.texPos = (all->game.drawSt - all->map.resH / 2 + all->game.lineH / 2) * all->wtex.texStep;
-	all->wtex.buff = malloc(all->game.lineH * sizeof(uint32_t));
+	all->wtex.texPos = (all->game.drawSt - all->map.resH / 2 + \
+						all->game.lineH / 2) * all->wtex.texStep;
+	all->wtex.buff = malloc(all->game.lineH * sizeof(unsigned int));
 	while (y < all->game.drawEn)
 	{
 		all->wtex.texY = (int)all->wtex.texPos & (all->wtex.texH - 1);
@@ -92,6 +96,7 @@ void		texture_line(t_all *all, int z)
 	all->wtex.texH = all->tximg[all->wtex.texNum].height;
 	all->wtex.texW = all->tximg[all->wtex.texNum].width;
 	calc_pos_wall_hit(all);
-	all->wtex.texStep = 1.0 * ((double)all->wtex.texH / (double)all->game.lineH);
+	all->wtex.texStep = 1.0 * ((double)all->wtex.texH / \
+						(double)all->game.lineH);
 	calc_pos_tex_to_wall(all, z);
 }

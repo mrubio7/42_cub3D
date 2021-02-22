@@ -24,6 +24,7 @@
 # define KEY_F10						0x6D
 # define KEY_F11						0x67
 # define KEY_F12						0x6F
+# define KEY_CROSS						0x00
 # define KEY_PRT_SC						NULL
 # define KEY_SCR_LOCK					NULL
 # define KEY_PAUSE						NULL

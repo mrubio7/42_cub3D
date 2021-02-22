@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/16 18:07:05 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/22 19:55:48 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		main(int argc, char *argv[])
 {
 	t_all	all;
 
+	ft_bzero(&all, sizeof(t_all));
 	if (argc == 3)
 	{
 		if (ft_strncmp("--save", argv[2], 6) == 0)
@@ -26,7 +27,7 @@ int		main(int argc, char *argv[])
 		if (read_dotcub(&all, argv[1]) == -1)
 			return (0);
 		all.vars.mlx = mlx_init();
-		init_game(all);
+		init_game(&all);
 	}
 	else
 		perror("MISSING MAP");

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 20:29:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/08 10:11:55 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/20 16:08:12 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			management_dotcub_closedmap(char **map)
 
 	row = 0;
 	x = 0;
-	while (map[row][x])
+	while ((map[row][x]))
 	{
 		if (map[row][x] == '0' && (!(map[row - 1]) || !(map[row + 1])))
 			return (-1);
