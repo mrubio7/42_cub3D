@@ -1,4 +1,4 @@
-GCC = gcc -Wall -Wextra -Werror -g
+GCC = g++ -Wall -Wextra -Werror -g
 NAME = cub3D
 HEAD = -I ./libs/minilibx_macos/
 MAKE_LIBS = ./libs/libft/libft.a ./libs/minilibx_macos/libmlx.a
@@ -75,7 +75,7 @@ start:
 	@echo "${YB}  D ${Y} Move Right${End}"
 	@echo "${YB}  ->${Y} Turn Left${End}"
 	@echo "${YB} <- ${Y} Turn Right\n${End}"
-	@echo "${YB}ESC ${Y} Close game${End}"
+	@echo "${YB} ESC${Y} Close game${End}"
 	./cub3D map.cub
 
 files/%.o: %.c

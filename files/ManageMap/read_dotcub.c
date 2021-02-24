@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 09:12:38 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 18:43:14 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 20:22:22 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int			read_dotcub(t_all *all, char *mapname)
 		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
 		{
 			management_dotcub(line, &all->map);
+			free(line);
 			if (nbytes == 0)
 				break ;
 		}
 		close(fd);
-		//free(line);
 		if (management_dotcub_errors(&all->map, &all->vars) == -1)
 			return (-1);
 		return (1);

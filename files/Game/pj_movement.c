@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 20:53:43 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 20:05:26 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:27:33 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 void	move_w(t_pj *pj, t_map *map)
 {
-	if (map->map[(int)(pj->posY + (pj->dirY * 0.2))]\
-				[(int)(pj->posX + (pj->dirX * 0.2))] != '1')
+	if (map->map[(int)(pj->posy + (pj->dirY * 0.2))]\
+				[(int)(pj->posx + (pj->dirx * 0.2))] != '1')
 	{
-		pj->posY += pj->dirY * 0.1;
-		pj->posX += pj->dirX * 0.1;
+		pj->posy += pj->dirY * 0.1;
+		pj->posx += pj->dirx * 0.1;
 	}
-	else if ((map->map[(int)(pj->posY)]\
-			[(int)(pj->posX + (pj->dirX * 0.2))] != '1'))
-		pj->posX += pj->dirX * 0.1;
-	else if (map->map[(int)(pj->posY + (pj->dirY * 0.2))]\
-			[(int)(pj->posX)] != '1')
-		pj->posY += pj->dirY * 0.1;
+	else if ((map->map[(int)(pj->posy)]\
+			[(int)(pj->posx + (pj->dirx * 0.2))] != '1'))
+		pj->posx += pj->dirx * 0.1;
+	else if (map->map[(int)(pj->posy + (pj->dirY * 0.2))]\
+			[(int)(pj->posx)] != '1')
+		pj->posy += pj->dirY * 0.1;
 }
 
 void	move_s(t_pj *pj, t_map *map)
 {
-	if (map->map[(int)(pj->posY - (pj->dirY * 0.2))]\
-				[(int)(pj->posX - (pj->dirX * 0.2))] != '1')
+	if (map->map[(int)(pj->posy - (pj->dirY * 0.2))]\
+				[(int)(pj->posx - (pj->dirx * 0.2))] != '1')
 	{
-		pj->posY -= pj->dirY * 0.1;
-		pj->posX -= pj->dirX * 0.1;
+		pj->posy -= pj->dirY * 0.1;
+		pj->posx -= pj->dirx * 0.1;
 	}
-	else if ((map->map[(int)(pj->posY)]\
-			[(int)(pj->posX - (pj->dirX * 0.2))] != '1'))
-		pj->posX -= pj->dirX * 0.1;
-	else if (map->map[(int)(pj->posY - (pj->dirY * 0.2))]\
-			[(int)(pj->posX)] != '1')
-		pj->posY -= pj->dirY * 0.1;
+	else if ((map->map[(int)(pj->posy)]\
+			[(int)(pj->posx - (pj->dirx * 0.2))] != '1'))
+		pj->posx -= pj->dirx * 0.1;
+	else if (map->map[(int)(pj->posy - (pj->dirY * 0.2))]\
+			[(int)(pj->posx)] != '1')
+		pj->posy -= pj->dirY * 0.1;
 }
 
 void	move_arrow_left(t_pj *pj)
@@ -49,12 +49,12 @@ void	move_arrow_left(t_pj *pj)
 	double olddirx;
 	double oldplanex;
 
-	olddirx = pj->dirX;
-	oldplanex = pj->planeX;
-	pj->dirX = pj->dirX * cos(-0.05) - pj->dirY * sin(-0.05);
+	olddirx = pj->dirx;
+	oldplanex = pj->planex;
+	pj->dirx = pj->dirx * cos(-0.05) - pj->dirY * sin(-0.05);
 	pj->dirY = olddirx * sin(-0.05) + pj->dirY * cos(-0.05);
-	pj->planeX = pj->planeX * cos(-0.05) - pj->planeY * sin(-0.05);
-	pj->planeY = oldplanex * sin(-0.05) + pj->planeY * cos(-0.05);
+	pj->planex = pj->planex * cos(-0.05) - pj->planey * sin(-0.05);
+	pj->planey = oldplanex * sin(-0.05) + pj->planey * cos(-0.05);
 }
 
 void	move_arrow_right(t_pj *pj)
@@ -62,12 +62,12 @@ void	move_arrow_right(t_pj *pj)
 	double olddirx;
 	double oldplanex;
 
-	olddirx = pj->dirX;
-	oldplanex = pj->planeX;
-	pj->dirX = pj->dirX * cos(0.05) - pj->dirY * sin(0.05);
+	olddirx = pj->dirx;
+	oldplanex = pj->planex;
+	pj->dirx = pj->dirx * cos(0.05) - pj->dirY * sin(0.05);
 	pj->dirY = olddirx * sin(0.05) + pj->dirY * cos(0.05);
-	pj->planeX = pj->planeX * cos(0.05) - pj->planeY * sin(0.05);
-	pj->planeY = oldplanex * sin(0.05) + pj->planeY * cos(0.05);
+	pj->planex = pj->planex * cos(0.05) - pj->planey * sin(0.05);
+	pj->planey = oldplanex * sin(0.05) + pj->planey * cos(0.05);
 }
 
 int		movement_pj(int keycode, t_all *all)

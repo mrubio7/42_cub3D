@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/23 19:50:48 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:27:31 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct	s_map
 {
 	int			resW;
 	int			resH;
-	char		*path_N;
-	char		*path_E;
-	char		*path_S;
-	char		*path_W;
-	char		*path_I;
+	char		*path_n;
+	char		*path_e;
+	char		*path_s;
+	char		*path_w;
+	char		*path_i;
 	int			color_f;
 	int			color_c;
 	char		**map;
@@ -61,27 +61,27 @@ typedef struct	s_tximg
 
 typedef struct	s_pj
 {
-	double		posX;
-	double		posY;
-	double		dirX;
+	double		posx;
+	double		posy;
+	double		dirx;
 	double		dirY;
-	double		planeX;
-	double		planeY;
-	double		cameraX;
+	double		planex;
+	double		planey;
+	double		camerax;
 }				t_pj;
 
 typedef struct	s_ray
 {
-	double		rayDirX;
-	double		rayDirY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	int			stepX;
-	int			stepY;
-	int			mapX;
-	int			mapY;
+	double		raydirx;
+	double		raydiry;
+	double		sidedistx;
+	double		sidedisty;
+	double		deltadistx;
+	double		deltadisty;
+	int			stepx;
+	int			stepy;
+	int			mapx;
+	int			mapy;
 	int			side;
 	int			hit;
 	int			sprite;
@@ -89,10 +89,10 @@ typedef struct	s_ray
 
 typedef struct	s_game
 {
-	double		perpWallDist;
-	int			lineH;
-	int			drawSt;
-	int			drawEn;
+	double		perpwalldist;
+	int			lineh;
+	int			drawst;
+	int			drawen;
 	int			color;
 }				t_game;
 
@@ -100,18 +100,18 @@ typedef struct	s_spr
 {
 	int			*zbuffer;
 	double		*sp_dis;
-	double		spX;
-	double		spY;
-	double		invDet;
-	double		transformX;
-	double		transformY;
-	int			sp_screenX;
-	int			spH;
-	int			spW;
-	int			drawStY;
-	int			drawStX;
-	int			drawEnY;
-	int			drawEnX;
+	double		spx;
+	double		spy;
+	double		invdet;
+	double		transformx;
+	double		transformy;
+	int			sp_screenx;
+	int			sph;
+	int			spw;
+	int			drawsty;
+	int			drawstx;
+	int			draweny;
+	int			drawenx;
 	int			*sp_ord;
 	uint32_t	*buff;
 }				t_spr;
@@ -121,12 +121,12 @@ typedef struct	s_wtex
 	int			texNum;
 	double		wallX;
 	double		texStep;
-	double		texPos;
+	double		texpos;
 	int			texX;
-	int			texY;
+	int			texy;
 	uint32_t	*buff;
-	int			texH;
-	int			texW;
+	int			texh;
+	int			texw;
 }				t_wtex;
 
 typedef struct	s_spos

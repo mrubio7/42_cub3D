@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 20:26:44 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/23 18:38:45 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:27:35 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,72 +15,72 @@
 void	init_dda_params(t_ray *ray, t_pj *pj)
 {
 	ray->hit = 0;
-	ray->mapX = (int)pj->posX;
-	ray->mapY = (int)pj->posY;
-	ray->deltaDistX = fabs(1 / ray->rayDirX);
-	ray->deltaDistY = fabs(1 / ray->rayDirY);
-	if (ray->rayDirX < 0)
+	ray->mapx = (int)pj->posx;
+	ray->mapy = (int)pj->posy;
+	ray->deltadistx = fabs(1 / ray->raydirx);
+	ray->deltadisty = fabs(1 / ray->raydiry);
+	if (ray->raydirx < 0)
 	{
-		ray->stepX = -1;
-		ray->sideDistX = (pj->posX - ray->mapX) * ray->deltaDistX;
+		ray->stepx = -1;
+		ray->sidedistx = (pj->posx - ray->mapx) * ray->deltadistx;
 	}
 	else
 	{
-		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - pj->posX) * ray->deltaDistX;
+		ray->stepx = 1;
+		ray->sidedistx = (ray->mapx + 1.0 - pj->posx) * ray->deltadistx;
 	}
-	if (ray->rayDirY < 0)
+	if (ray->raydiry < 0)
 	{
-		ray->stepY = -1;
-		ray->sideDistY = (pj->posY - ray->mapY) * ray->deltaDistY;
+		ray->stepy = -1;
+		ray->sidedisty = (pj->posy - ray->mapy) * ray->deltadisty;
 	}
 	else
 	{
-		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - pj->posY) * ray->deltaDistY;
+		ray->stepy = 1;
+		ray->sidedisty = (ray->mapy + 1.0 - pj->posy) * ray->deltadisty;
 	}
 }
 
 void	ray_hit_dda(char **map, t_ray *ray)
 {
-	if (ray->sideDistX < ray->sideDistY)
+	if (ray->sidedistx < ray->sidedisty)
 	{
-		ray->sideDistX += ray->deltaDistX;
-		ray->mapX += ray->stepX;
+		ray->sidedistx += ray->deltadistx;
+		ray->mapx += ray->stepx;
 		ray->side = 0;
 	}
 	else
 	{
-		ray->sideDistY += ray->deltaDistY;
-		ray->mapY += ray->stepY;
+		ray->sidedisty += ray->deltadisty;
+		ray->mapy += ray->stepy;
 		ray->side = 1;
 	}
-	if (map[ray->mapY][ray->mapX] == '1')
+	if (map[ray->mapy][ray->mapx] == '1')
 		ray->hit = 1;
 }
 
 void	calc_drawline(t_game *game, t_map *map, t_ray *ray, t_pj *pj)
 {
 	if (ray->side == 0)
-		game->perpWallDist = (ray->mapX - pj->posX +\
-							(1 - ray->stepX) / 2) / ray->rayDirX;
+		game->perpwalldist = (ray->mapx - pj->posx +\
+							(1 - ray->stepx) / 2) / ray->raydirx;
 	else
-		game->perpWallDist = (ray->mapY - pj->posY +\
-							(1 - ray->stepY) / 2) / ray->rayDirY;
-	game->lineH = (int)(map->resH / game->perpWallDist);
-	game->drawSt = (-game->lineH / 2) + (map->resH / 2);
-	if (game->drawSt < 0)
-		game->drawSt = 0;
-	game->drawEn = (game->lineH / 2) + (map->resH / 2);
-	if (game->drawEn >= map->resH)
-		game->drawEn = map->resH - 1;
+		game->perpwalldist = (ray->mapy - pj->posy +\
+							(1 - ray->stepy) / 2) / ray->raydiry;
+	game->lineh = (int)(map->resH / game->perpwalldist);
+	game->drawst = (-game->lineh / 2) + (map->resH / 2);
+	if (game->drawst < 0)
+		game->drawst = 0;
+	game->drawen = (game->lineh / 2) + (map->resH / 2);
+	if (game->drawen >= map->resH)
+		game->drawen = map->resH - 1;
 }
 
 int		v_line(t_all *all, int z)
 {
-	all->pj.cameraX = (2 * z) / (double)(all->map.resW) - 1;
-	all->ray.rayDirX = all->pj.dirX + all->pj.planeX * all->pj.cameraX;
-	all->ray.rayDirY = all->pj.dirY + all->pj.planeY * all->pj.cameraX;
+	all->pj.camerax = (2 * z) / (double)(all->map.resW) - 1;
+	all->ray.raydirx = all->pj.dirx + all->pj.planex * all->pj.camerax;
+	all->ray.raydiry = all->pj.dirY + all->pj.planey * all->pj.camerax;
 	init_dda_params(&all->ray, &all->pj);
 	while (all->ray.hit == 0)
 		ray_hit_dda(all->map.map, &all->ray);

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 20:05:24 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:27:36 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,29 @@ char		ft_strchr_one(char *s, int c)
 
 t_pj		dir_pos(char pos, t_pj pj)
 {
-	pj.dirX = 0;
+	pj.dirx = 0;
 	pj.dirY = 0;
-	pj.planeX = 0;
-	pj.planeY = 0;
+	pj.planex = 0;
+	pj.planey = 0;
 	if (pos == 'N')
 	{
 		pj.dirY = -1;
-		pj.planeX = -0.90;
+		pj.planex = -0.90;
 	}
 	else if (pos == 'S')
 	{
 		pj.dirY = 1;
-		pj.planeX = 0.90;
+		pj.planex = 0.90;
 	}
 	else if (pos == 'W')
 	{
-		pj.dirX = -1;
-		pj.planeY = 0.90;
+		pj.dirx = -1;
+		pj.planey = 0.90;
 	}
 	else if (pos == 'E')
 	{
-		pj.dirX = 1;
-		pj.planeY = -0.90;
+		pj.dirx = 1;
+		pj.planey = -0.90;
 	}
 	return (pj);
 }
@@ -70,8 +70,8 @@ t_pj		detect_start_pos(char **map, t_pj pj)
 		if ((pos = ft_strchr_one("NSEW", map[y][x])) != (char)NULL)
 		{
 			pj = dir_pos(pos, pj);
-			pj.posX = x + 0.5f;
-			pj.posY = y + 0.5f;
+			pj.posx = x + 0.5f;
+			pj.posy = y + 0.5f;
 			return (pj);
 		}
 		else

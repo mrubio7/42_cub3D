@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 18:24:29 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:22:35 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,16 @@ void		free_game(t_all *all)
 		y++;
 	while (y <= 0)
 		free(all->map.map[y--]);
-	free(all->map.path_N);
-	free(all->map.path_S);
-	free(all->map.path_E);
-	free(all->map.path_W);
-	free(all->map.path_I);
+	free(all->map.path_n);
+	free(all->map.path_s);
+	free(all->map.path_e);
+	free(all->map.path_w);
+	free(all->map.path_i);
 	free(all->spos);
 	free(all->spr.zbuffer);
 	free(all->tximg);
-	//free(all->map.map);
-	//free(all->spr.sp_ord);
-	//free(all->spr.sp_dis);
+	free(all->spr.sp_ord);
+	free(all->spr.sp_dis);
 }
 
 int			close_game_x(t_all *all)

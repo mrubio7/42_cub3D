@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 20:26:23 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 19:36:13 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 21:22:38 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ int		read_tex(t_vars *vars, t_tximg *tximg, char *path)
 int		load_textures(t_all *all)
 {
 	all->tximg = malloc(sizeof(t_tximg) * 7);
-	if (read_tex(&(all->vars), &(all->tximg[0]), all->map.path_N) == -1)
+	if (read_tex(&(all->vars), &(all->tximg[0]), all->map.path_n) == -1)
 		return (-1);
-	if (read_tex(&(all->vars), &(all->tximg[1]), all->map.path_E) == -1)
+	if (read_tex(&(all->vars), &(all->tximg[1]), all->map.path_e) == -1)
 		return (-1);
-	if (read_tex(&(all->vars), &(all->tximg[2]), all->map.path_S) == -1)
+	if (read_tex(&(all->vars), &(all->tximg[2]), all->map.path_s) == -1)
 		return (-1);
-	if (read_tex(&(all->vars), &(all->tximg[3]), all->map.path_W) == -1)
+	if (read_tex(&(all->vars), &(all->tximg[3]), all->map.path_w) == -1)
 		return (-1);
-	if (read_tex(&(all->vars), &(all->tximg[4]), all->map.path_I) == -1)
+	if (read_tex(&(all->vars), &(all->tximg[4]), all->map.path_i) == -1)
 		return (-1);
 	if (read_tex(&(all->vars), &(all->tximg[5]), "./textures/Jail.xpm") == -1)
 		return (-1);
