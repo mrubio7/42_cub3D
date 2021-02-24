@@ -6,21 +6,6 @@ LIB := -L libs/libft -lft -L libs/minilibx_macos -lmlx -framework OpenGL -framew
 DLIBMLX = libmlx.dylib
 
 SRCS =	./files/GNL/get_next_line.c \
-		./files/printf/ft_printf.c \
-		./files/printf/src/ft_info_flags.c \
-		./files/printf/src/ft_put_flag_hex.c \
-		./files/printf/src/ft_printf_utils.c \
-		./files/printf/src/ft_putnbr.c \
-		./files/printf/src/ft_put_flag_str.c \
-		./files/printf/src/ft_put_flag_mem.c \
-		./files/printf/src/ft_putnbr_abs.c \
-		./files/printf/src/ft_putchar.c \
-		./files/printf/src/ft_puthex.c \
-		./files/printf/src/ft_check_arg.c \
-		./files/printf/src/ft_put_flag_nbr.c \
-		./files/printf/src/ft_putstr.c \
-		./files/printf/src/ft_put_flag_char.c \
-		./files/printf/src/ft_putmem.c \
 		./files/ManageMap/management_dotcub_path.c \
 		./files/ManageMap/management_dotcub.c \
 		./files/ManageMap/read_dotcub.c \
