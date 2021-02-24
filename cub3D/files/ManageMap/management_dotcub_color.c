@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:56:02 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 22:05:58 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 22:12:04 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int			management_dotcub_color(char *line)
 			perror("CEILING COLOR ERROR\n");
 		return (0);
 	}
+	free(str);
 	return (create_trgb(0, r, g, b));
 }
