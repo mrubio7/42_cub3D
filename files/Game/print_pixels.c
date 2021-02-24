@@ -6,18 +6,21 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 20:06:47 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/23 19:51:36 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void		my_mlx_pixel_put(t_img *data, int x, int y, int color)
+void		my_mlx_pixel_put(t_img *data, int x, int y, int color, t_all *all)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	if (x <= all->map.resW && y <= all->map.resH)
+	{
+		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+		*(unsigned int*)dst = color;
+	}
 }
 
 void		put_f_and_c(t_all *all, int z, int x)
@@ -26,7 +29,7 @@ void		put_f_and_c(t_all *all, int z, int x)
 			&& all->game.lineH < all->map.resH)
 	{
 		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
-						all->map.color_f);
+						all->map.color_f, all);
 		x++;
 	}
 	x = 0;
@@ -34,7 +37,7 @@ void		put_f_and_c(t_all *all, int z, int x)
 		all->game.lineH = all->map.resH - 1;
 	while (x < all->game.drawEn && all->game.lineH < all->map.resH)
 	{
-		my_mlx_pixel_put(&all->img, all->map.resW - z, x, all->map.color_c);
+		my_mlx_pixel_put(&all->img, all->map.resW - z, x, all->map.color_c, all);
 		x++;
 	}
 }
@@ -44,10 +47,10 @@ void		put_walls(t_all *all, int z)
 	int x;
 
 	x = 0;
-	while (x < all->game.lineH)
+	while (x < all->game.lineH && (all->map.resW - z) > 0)
 	{
 		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawSt,\
-						all->wtex.buff[x]);
+						all->wtex.buff[x], all);
 		all->wtex.buff[x] = 0;
 		x++;
 	}

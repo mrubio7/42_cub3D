@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:06:20 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 19:56:12 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/23 20:14:28 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void		sprite_calc_stripe(t_all *all)
 	int y;
 
 	stripe = all->spr.drawStX;
-	while (stripe < all->spr.drawEnX)
+	while (stripe <= all->spr.drawEnX)
 	{
 		y = all->spr.drawStY;
 		all->wtex.texX = (int)(256 * (stripe - (-all->spr.spW / 2 + \
-						all->spr.sp_screenX)) * all->wtex.texW / -all->spr.spW) / 256;
-		if (all->spr.transformY > 0 && stripe < all->map.resW &&\
-			all->spr.transformY < all->spr.zbuffer[stripe] + 1)
+		all->spr.sp_screenX)) * all->wtex.texW / -all->spr.spW) / 256;
+		if (all->spr.transformY > 0 && stripe <= all->map.resW &&\
+			all->spr.transformY < all->spr.zbuffer[stripe])
 		{
 			while (y < all->spr.drawEnY)
 			{
@@ -59,7 +59,7 @@ void		sprite_calc_stripe(t_all *all)
 				all->wtex.texY = ((d * all->wtex.texH) / all->spr.spH) / 256 + 1;
 				all->game.color = get_color_from_addr(all, 4);
 				if ((all->game.color & 0x00FFFFFF) != 0)
-					my_mlx_pixel_put(&all->img, all->map.resW - stripe, y, all->game.color);
+					my_mlx_pixel_put(&all->img, all->map.resW - stripe, y, all->game.color, all);
 				y++;
 			}
 		}
@@ -72,10 +72,10 @@ void		get_sprites(t_all *all)
 	int p;
 
 	p = 0;
-	ft_sort_index(all->spr.sp_dis, all->spr.sp_ord, numSprites);
-	while (p <= numSprites)
+	ft_sort_index(all->spr.sp_dis, all->spr.sp_ord, NUMSPRITES);
+	while (p <= NUMSPRITES)
 	{
-		all->spr.sp_dis[p] = ((all->pj.posX - all->spos[p].x) * (all->pj.posX - all->spos[p].x) + all->pj.posY - all->spos[p].y) * (all->pj.posY - all->spos[p].y));
+		all->spr.sp_dis[p] = ((all->pj.posX - all->spos[p].x) * (all->pj.posX - all->spos[p].x) + all->pj.posY - all->spos[p].y) * (all->pj.posY - all->spos[p].y);
 		if ((all->spr.sp_dis[p] / 1) > 0.5)
 			all->spr.sp_dis[p] = 0.5;
 		sprite_pos(all, p);

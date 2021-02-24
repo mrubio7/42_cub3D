@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 18:40:07 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/23 19:45:19 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		loop_frame(t_all *all)
 	while (z < all->map.resW)
 	{
 		v_line(all, z);
-		all->spr.zbuffer[z] = all->game.perpWallDist;
+		all->spr.zbuffer[z] = all->game.perpWallDist + 1;
 		z++;
 	}
 	get_sprites(all);

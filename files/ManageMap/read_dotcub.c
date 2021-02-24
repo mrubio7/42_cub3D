@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 09:12:38 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/22 20:13:23 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 18:43:14 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int			read_dotcub(t_all *all, char *mapname)
 	char	*line;
 	int		rows;
 
-	fd = open("map.cub", O_RDONLY);
+	fd = open(mapname, O_RDONLY);
 	if (fd > 1)
 	{
-		all->map.map = malloc(size_width * size_height * sizeof(char **));
+		all->map.map = malloc(SIZE_WIDTH * SIZE_HEIGHT * sizeof(char **));
 		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
 		{
 			management_dotcub(line, &all->map);
@@ -30,7 +30,7 @@ int			read_dotcub(t_all *all, char *mapname)
 				break ;
 		}
 		close(fd);
-		free(line);
+		//free(line);
 		if (management_dotcub_errors(&all->map, &all->vars) == -1)
 			return (-1);
 		return (1);
