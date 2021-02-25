@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:56:02 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 22:12:04 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 20:14:28 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,14 @@ int			management_dotcub_color(char *line)
 	if (management_dotcub_color_error(r, g, b) == 0)
 	{
 		if (line[0] == 'F')
-			perror("FLOOR COLOR ERROR\n");
+			perror("ERROR\n Error in floor color");
 		if (line[0] == 'C')
-			perror("CEILING COLOR ERROR\n");
+			perror("ERROR\n Error in ceiling color");
 		return (0);
 	}
+	free(str[2]);
+	free(str[1]);
+	free(str[0]);
 	free(str);
 	return (create_trgb(0, r, g, b));
 }

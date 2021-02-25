@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 22:59:33 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 16:45:46 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ typedef struct	s_spr
 	int			draweny;
 	int			drawenx;
 	int			*sp_ord;
-	uint32_t	*buff;
 }				t_spr;
 
 typedef struct	s_wtex

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 15:52:32 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 20:08:52 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void		free_game(t_all *all)
 	free(all->map.path_e);
 	free(all->map.path_w);
 	free(all->map.path_i);
+	free(all->map.map);
 	free(all->spos);
 	free(all->spr.zbuffer);
-	free(all->tximg);
 	free(all->spr.sp_ord);
 	free(all->spr.sp_dis);
+	free(all->tximg);
 }
 
 int			close_game_x(t_all *all)
@@ -65,15 +66,12 @@ int			init_game(t_all *all)
 	all->spr.sp_dis = malloc(NUMSPRITES * sizeof(double));
 	if (load_textures(all) == -1)
 	{
-		perror("ERROR LOADING TEXTURES");
+		perror("ERROR\nError loading textures");
 		return (0);
 	}
 	init_sprites(all);
 	if (all->vars.bmp == 1)
-	{
 		save_bmp(all);
-		exit(0);
-	}
 	mlx_loop_hook(all->vars.mlx, loop_frame, all);
 	mlx_loop(all->vars.mlx);
 	return (1);

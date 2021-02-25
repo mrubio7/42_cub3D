@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:57:35 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 16:28:04 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 16:50:39 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int argc, char *argv[])
 		if ((check = ft_strncmp("--save", argv[2], 6)) == 0)
 			all.vars.bmp = 1;
 	}
-	if (argc > 1 && argc < 4 && check == 0)
+	if (argc > 1 && argc < 4)
 	{
 		if (read_dotcub(&all, argv[1]) == -1)
 			return (0);
