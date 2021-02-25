@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 09:12:38 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 20:22:22 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 16:21:18 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int			read_dotcub(t_all *all, char *mapname)
 			return (-1);
 		return (1);
 	}
-	perror("Map error");
+	perror("ERROR\nMap not found");
 	return (-1);
 }

@@ -6,13 +6,13 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 22:17:48 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 21:22:32 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 22:59:07 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		management_dotcub(char *line, t_map *map)
+void		management_dotcub(char *line, t_map *map)
 {
 	static int row;
 
@@ -38,5 +38,4 @@ int		management_dotcub(char *line, t_map *map)
 		map->map[row + 1] = NULL;
 		row++;
 	}
-	return (row);
 }

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 23:23:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 21:22:35 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 15:52:32 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void		free_game(t_all *all)
 
 	y = 0;
 	while (all->map.map[y])
-		y++;
-	while (y <= 0)
-		free(all->map.map[y--]);
+		free(all->map.map[y++]);
 	free(all->map.path_n);
 	free(all->map.path_s);
 	free(all->map.path_e);
@@ -72,7 +70,10 @@ int			init_game(t_all *all)
 	}
 	init_sprites(all);
 	if (all->vars.bmp == 1)
+	{
 		save_bmp(all);
+		exit(0);
+	}
 	mlx_loop_hook(all->vars.mlx, loop_frame, all);
 	mlx_loop(all->vars.mlx);
 	return (1);

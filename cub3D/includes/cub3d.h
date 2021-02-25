@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 21:27:31 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/24 22:59:33 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ typedef struct	s_all
 
 int				ft_get_next_line(int fd, char **line);
 int				ft_printf(const char *str, ...);
-int				management_dotcub(char *line, t_map *map);
+void			management_dotcub(char *line, t_map *map);
 void			management_dotcub_res(char *line, t_map *map);
 char			*management_dotcub_path(char *line);
 char			*management_dotcub_path_sprite(char *line);
