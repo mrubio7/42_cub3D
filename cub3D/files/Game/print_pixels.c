@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:37:16 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 20:26:44 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 21:09:53 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void		my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 void		put_f_and_c(t_all *all, int z, int x)
 {
-	while ((x + all->game.drawst) < all->map.resH \
-			&& all->game.lineh < all->map.resH)
+	while ((x + all->game.drawst) < all->map.resh \
+			&& all->game.lineh < all->map.resh)
 	{
-		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawst,\
+		my_mlx_pixel_put(&all->img, all->map.resw - z, x + all->game.drawst,\
 						all->map.color_f);
 		x++;
 	}
 	x = 0;
-	if (all->game.lineh > all->map.resH)
-		all->game.lineh = all->map.resH - 1;
-	while (x < all->game.drawen && all->game.lineh < all->map.resH)
+	if (all->game.lineh > all->map.resh)
+		all->game.lineh = all->map.resh - 1;
+	while (x < all->game.drawen && all->game.lineh < all->map.resh)
 	{
-		my_mlx_pixel_put(&all->img, all->map.resW - z, x, all->map.color_c);
+		my_mlx_pixel_put(&all->img, all->map.resw - z, x, all->map.color_c);
 		x++;
 	}
 }
@@ -45,9 +45,9 @@ void		put_walls(t_all *all, int z)
 	int x;
 
 	x = 0;
-	while (x < all->game.lineh && (all->map.resW - z) > 0)
+	while (x < all->game.lineh && (all->map.resw - z) > 0)
 	{
-		my_mlx_pixel_put(&all->img, all->map.resW - z, x + all->game.drawst,\
+		my_mlx_pixel_put(&all->img, all->map.resw - z, x + all->game.drawst,\
 						all->wtex.buff[x]);
 		all->wtex.buff[x] = 0;
 		x++;

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:03:19 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 15:53:22 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 21:09:53 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int		bmp_header(int fd, t_map *map, int nbpr, int pad)
 	size = (unsigned int *)&head[2];
 	wid = (unsigned int *)&head[18];
 	hei = (unsigned int *)&head[22];
-	*size = 54 + (nbpr + pad) * map->resH;
-	*wid = map->resW;
-	*hei = map->resH;
+	*size = 54 + (nbpr + pad) * map->resh;
+	*wid = map->resw;
+	*hei = map->resh;
 	return (!(write(fd, head, 54) < 0));
 }
 
@@ -70,12 +70,12 @@ int		bmp_pix(int fd, t_all *all, int padsize)
 	int				y;
 	int				pixel;
 
-	y = all->map.resH - 1;
+	y = all->map.resh - 1;
 	ft_bzero(zero, 3);
 	while (y >= 0)
 	{
 		x = 0;
-		while (x < all->map.resW)
+		while (x < all->map.resw)
 		{
 			pixel = get_color(all, x, y, padsize);
 			if (write(fd, &pixel, 3) < 0)
@@ -96,7 +96,7 @@ int		save_bmp(t_all *all)
 	int		nbpr;
 
 	loop_frame(all);
-	nbpr = all->map.resW * (all->img.bits_per_pixel / 8);
+	nbpr = all->map.resw * (all->img.bits_per_pixel / 8);
 	padsize = (nbpr - 4) % 4;
 	if ((fd = open("screenshot.bmp", O_WRONLY | O_CREAT, 0666 |
 									O_TRUNC | O_APPEND)) < 0)

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 16:23:29 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 21:09:50 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		management_dotcub_mapstart(char **map)
 
 int		management_dotcub_errors(t_map *map, t_vars *vars)
 {
-	if (management_dotcub_res_error(map->resW, map->resH, vars) == -1)
+	if (management_dotcub_res_error(map->resw, map->resh, vars) == -1)
 	{
 		perror("ERROR\nResolution error");
 		return (-1);

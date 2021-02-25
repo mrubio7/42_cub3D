@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop_frame.c                                  :+:      :+:    :+:   */
+/*   keycod.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:02:04 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 21:09:59 by mrubio           ###   ########.fr       */
+/*   Created: 2021/02/25 21:01:56 by mrubio            #+#    #+#             */
+/*   Updated: 2021/02/25 21:03:41 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
-int		loop_frame(t_all *all)
-{
-	int z;
-
-	z = 0;
-	mlx_do_sync(all->vars.mlx);
-	while (z < all->map.resw)
-	{
-		v_line(all, z);
-		all->spr.zbuffer[z] = all->game.perpwalldist + 1;
-		z++;
-	}
-	get_sprites(all);
-	mlx_put_image_to_window(all->vars.mlx, all->vars.win, all->img.img, 0, 0);
-	return (0);
-}
+#ifndef KEYCOD_H
+# define KEYCOD_H
+# define KEY_ESC				0x35
+# define KEY_W					0xD
+# define KEY_A					0x0
+# define KEY_S					0x1
+# define KEY_D					0x2
+# define KEY_ARROW_LEFT			0x7B
+# define KEY_ARROW_RIGHT		0x7C
+#endif

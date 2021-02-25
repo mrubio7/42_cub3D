@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 20:25:29 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 21:12:34 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define NUMSPRITES 5
 # include "../libs/minilibx_macos/mlx.h"
 # include "../libs/libft/libft.h"
-# include "keycodes.h"
+# include "keycod.h"
 # include <stdio.h>
 # include <errno.h>
 # include <math.h>
@@ -27,8 +27,8 @@
 
 typedef struct	s_map
 {
-	int			resW;
-	int			resH;
+	int			resw;
+	int			resh;
 	char		*path_n;
 	char		*path_e;
 	char		*path_s;
@@ -64,7 +64,7 @@ typedef struct	s_pj
 	double		posx;
 	double		posy;
 	double		dirx;
-	double		dirY;
+	double		diry;
 	double		planex;
 	double		planey;
 	double		camerax;
@@ -117,11 +117,11 @@ typedef struct	s_spr
 
 typedef struct	s_wtex
 {
-	int			texNum;
-	double		wallX;
-	double		texStep;
+	int			texnum;
+	double		wallx;
+	double		texstep;
 	double		texpos;
-	int			texX;
+	int			texx;
 	int			texy;
 	uint32_t	*buff;
 	int			texh;

@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:06:20 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 20:29:03 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 21:11:25 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ void		sprite_pos(t_all *all, int x)
 {
 	all->spr.spx = all->spos[all->spr.sp_ord[x]].x - all->pj.posx;
 	all->spr.spy = all->spos[all->spr.sp_ord[x]].y - all->pj.posy;
-	all->spr.invdet = 1.0 / (all->pj.planex * all->pj.dirY - \
+	all->spr.invdet = 1.0 / (all->pj.planex * all->pj.diry - \
 					all->pj.dirx * all->pj.planey);
-	all->spr.transformx = all->spr.invdet * (all->pj.dirY * all->spr.spx - \
+	all->spr.transformx = all->spr.invdet * (all->pj.diry * all->spr.spx - \
 						all->pj.dirx * all->spr.spy);
 	all->spr.transformy = all->spr.invdet * (-all->pj.planey * all->spr.spx + \
 						all->pj.planex * all->spr.spy);
-	all->spr.sp_screenx = (int)((all->map.resW / 2) * \
+	all->spr.sp_screenx = (int)((all->map.resw / 2) * \
 						(1 + all->spr.transformx / all->spr.transformy));
-	all->spr.sph = ft_abs((int)(all->map.resH / (all->spr.transformy)));
-	all->spr.drawsty = -all->spr.sph / 2 + all->map.resH / 2;
+	all->spr.sph = ft_abs((int)(all->map.resh / (all->spr.transformy)));
+	all->spr.drawsty = -all->spr.sph / 2 + all->map.resh / 2;
 	all->spr.drawsty = (all->spr.drawsty < 0) ? 0 : all->spr.drawsty;
-	all->spr.draweny = all->spr.sph / 2 + all->map.resH / 2;
-	all->spr.draweny = (all->spr.draweny >= all->map.resH) ? \
-					all->map.resH - 1 : all->spr.draweny;
-	all->spr.spw = ft_abs((int)(all->map.resH / (all->spr.transformy)));
+	all->spr.draweny = all->spr.sph / 2 + all->map.resh / 2;
+	all->spr.draweny = (all->spr.draweny >= all->map.resh) ? \
+					all->map.resh - 1 : all->spr.draweny;
+	all->spr.spw = ft_abs((int)(all->map.resh / (all->spr.transformy)));
 	all->spr.drawstx = -all->spr.spw / 2 + all->spr.sp_screenx;
 	all->spr.drawstx = (all->spr.drawstx < 0) ? 0 : all->spr.drawstx;
 	all->spr.drawenx = all->spr.spw / 2 + all->spr.sp_screenx;
-	all->spr.drawenx = (all->spr.drawenx >= all->map.resW) ? \
-					all->map.resW - 1 : all->spr.drawenx;
+	all->spr.drawenx = (all->spr.drawenx >= all->map.resw) ? \
+					all->map.resw - 1 : all->spr.drawenx;
 }
 
 void		sprite_calc_stripe(t_all *all)
@@ -46,19 +46,19 @@ void		sprite_calc_stripe(t_all *all)
 	while (all->spr.drawstx <= all->spr.drawenx)
 	{
 		y = all->spr.drawsty;
-		all->wtex.texX = (int)(256 * (all->spr.drawstx - (-all->spr.spw / 2 + \
+		all->wtex.texx = (int)(256 * (all->spr.drawstx - (-all->spr.spw / 2 + \
 		all->spr.sp_screenx)) * all->wtex.texw / -all->spr.spw) / 256;
-		if (all->spr.transformy > 0 && all->spr.drawstx <= all->map.resW &&\
+		if (all->spr.transformy > 0 && all->spr.drawstx <= all->map.resw &&\
 			all->spr.transformy < all->spr.zbuffer[all->spr.drawstx])
 		{
 			while (y < all->spr.draweny)
 			{
-				d = (y) * 256 - all->map.resH * 128 + all->spr.sph * 128;
+				d = (y) * 256 - all->map.resh * 128 + all->spr.sph * 128;
 				all->wtex.texy = ((d * all->wtex.texh) /\
 								all->spr.sph) / 256 + 1;
 				all->game.color = get_color_from_addr(all, 4);
 				if ((all->game.color & 0x00FFFFFF) != 0)
-					my_mlx_pixel_put(&all->img, all->map.resW - \
+					my_mlx_pixel_put(&all->img, all->map.resw - \
 									all->spr.drawstx, y, all->game.color);
 				y++;
 			}

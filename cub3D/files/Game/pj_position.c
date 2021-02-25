@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 19:30:09 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/24 21:27:36 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/25 21:10:48 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ char		ft_strchr_one(char *s, int c)
 t_pj		dir_pos(char pos, t_pj pj)
 {
 	pj.dirx = 0;
-	pj.dirY = 0;
+	pj.diry = 0;
 	pj.planex = 0;
 	pj.planey = 0;
 	if (pos == 'N')
 	{
-		pj.dirY = -1;
+		pj.diry = -1;
 		pj.planex = -0.90;
 	}
 	else if (pos == 'S')
 	{
-		pj.dirY = 1;
+		pj.diry = 1;
 		pj.planex = 0.90;
 	}
 	else if (pos == 'W')
