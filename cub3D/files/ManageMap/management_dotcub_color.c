@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:56:02 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 20:29:01 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/26 21:24:09 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,13 @@ int			dec_to_color_int(int t, int r, int g, int b)
 	return (t << 24 | hex_r << 16 | hex_g << 8 | hex_b);
 }
 
-int			get_t(int trgb)
+int			free_colors(char **str, int r, int g, int b)
 {
-	return (trgb & (0xFF << 16));
+	free(str[2]);
+	free(str[1]);
+	free(str[0]);
+	free(str);
+	return (create_trgb(0, r, g, b));
 }
 
 int			management_dotcub_color(char *line)
@@ -70,6 +74,11 @@ int			management_dotcub_color(char *line)
 	while (line[x] < '0' || line[x] > '9')
 		x++;
 	str = ft_split(line + x, ',');
+	if (!(str[0]) || !(str[1]) || !(str[2]))
+	{
+		perror("ERROR\n Error in floor or ceiling color");
+		exit(0);
+	}
 	r = ft_atoi(str[0]);
 	g = ft_atoi(str[1]);
 	b = ft_atoi(str[2]);
@@ -77,11 +86,7 @@ int			management_dotcub_color(char *line)
 	{
 		if (line[0] == 'F' || line[0] == 'C')
 			perror("ERROR\n Error in floor or ceiling color");
-		return (0);
+		exit (0);
 	}
-	free(str[2]);
-	free(str[1]);
-	free(str[0]);
-	free(str);
-	return (create_trgb(0, r, g, b));
+	return (free_colors(str, r, g, b));
 }

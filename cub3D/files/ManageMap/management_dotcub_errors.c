@@ -6,20 +6,22 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:37:52 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 21:09:50 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/26 21:16:01 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		management_dotcub_res_error(int width, int heigth, t_vars *vars)
+int		management_dotcub_res_error(t_map *map, t_vars *vars)
 {
 	int sizx;
 	int sizy;
 
 	mlx_get_screen_size(vars->mlx, &sizx, &sizy);
-	if (width > sizx || heigth > sizy)
-		return (-1);
+	if (map->resw > sizx)
+		map->resw = sizx;
+	if (map->resh > sizy)
+		map->resh = sizy;
 	return (1);
 }
 
@@ -64,12 +66,8 @@ int		management_dotcub_mapstart(char **map)
 
 int		management_dotcub_errors(t_map *map, t_vars *vars)
 {
-	if (management_dotcub_res_error(map->resw, map->resh, vars) == -1)
-	{
-		perror("ERROR\nResolution error");
-		return (-1);
-	}
-	else if (management_dotcub_closedmap(map->map) == -1)
+	management_dotcub_res_error(map, vars);
+	if (management_dotcub_closedmap(map->map) == -1)
 	{
 		perror("ERROR\nMap is not closed");
 		return (-1);
