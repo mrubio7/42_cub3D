@@ -6,11 +6,17 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 09:12:38 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 21:22:19 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/27 11:24:11 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void		read_dotcub_error(t_all *all)
+{
+	perror("ERROR\nCould not read the map.cub");
+	exit(0);
+}
 
 int			read_dotcub(t_all *all, char *mapname)
 {
@@ -25,6 +31,8 @@ int			read_dotcub(t_all *all, char *mapname)
 		all->map.map = malloc(50 * 50 * sizeof(char **));
 		while ((nbytes = ft_get_next_line(fd, &line)) >= 0)
 		{
+			if (!(line[2]) && line[0] != '\0')
+				read_dotcub_error(all);
 			management_dotcub(line, &all->map);
 			free(line);
 			if (nbytes == 0)
