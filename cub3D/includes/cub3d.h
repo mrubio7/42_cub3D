@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/25 21:12:34 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/27 11:48:56 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@
 
 typedef struct	s_map
 {
+	int			error;
+	int			r;
+	int			n;
+	int			s;
+	int			e;
+	int			w;
+	int			i;
+	int			f;
+	int			c;
 	int			resw;
 	int			resh;
 	char		*path_n;
@@ -167,6 +176,8 @@ char			*management_dotcub_map(char *line);
 int				management_dotcub_errors(t_map *map, t_vars *vars);
 int				management_dotcub_color_error(int r, int g, int b);
 int				management_dotcub_closedmap(char **map);
+void			management_duplicated(t_map *map);
+void			read_dotcub_error(t_map *map, char *line);
 int				read_dotcub(t_all *all, char *argv);
 int				save_bmp(t_all *all);
 int				init_game(t_all *all);
