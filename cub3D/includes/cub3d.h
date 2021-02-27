@@ -6,7 +6,7 @@
 /*   By: mrubio <mrubio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 15:27:30 by mrubio            #+#    #+#             */
-/*   Updated: 2021/02/26 19:58:03 by mrubio           ###   ########.fr       */
+/*   Updated: 2021/02/27 00:58:29 by mrubio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 typedef struct	s_map
 {
 	int			error;
+	int			r;
+	int			no;
+	int			so;
+	int			ea;
+	int			we;
+	int			sp;
+	int			f;
+	int			c;
 	int			resw;
 	int			resh;
 	char		*path_n;
